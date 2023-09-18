@@ -7,7 +7,7 @@ export default function Navbar() {
   const NavRef = useRef();
 
   const toggleNav = () => {
-    NavRef.current.classList.toggle("mobile_nav");
+    NavRef.current.classList.toggle("responsive_nav");
   };
 
   const Links = [
@@ -23,30 +23,30 @@ export default function Navbar() {
       label: "Sale",
       to: "/",
     },
+    {
+      label: "Hóa đơn",
+      to: "/",
+    },
   ];
   return (
-    <nav className="navbar">
-      <button className="nav_toggle" onClick={toggleNav}>
-        <FaBars />
-      </button>
-      <ul className="navbar__links" ref={NavRef}>
+    <header>
+      <FaBars className="header_toggle" onClick={toggleNav} />
+      <nav ref={NavRef}>
         {Links.map((link, index) => (
-          <li className="navbar__link" key={index}>
-            <Link to={link.to}>{link.label}</Link>
-          </li>
+          <Link key={index} to={link.to}>
+            {link.label}
+          </Link>
         ))}
-      </ul>
+      </nav>
 
-      <div className="navbar__logo">
-        <h2>Logo</h2>
-      </div>
+      <h2 className="header_logo">Logo</h2>
 
-      <div className="navbar__icons">
+      <div className="header_icons">
         <BiSolidUser />
-        <div className="navbar_cart_icon">
+        <div className="cart">
           <BiSolidCart /> <span>0</span>
         </div>
       </div>
-    </nav>
+    </header>
   );
 }

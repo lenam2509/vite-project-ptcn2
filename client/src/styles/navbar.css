@@ -1,85 +1,106 @@
-.navbar {
+header {
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: #1a1a1a;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 5rem 1rem 1rem;
-  color: white;
+  padding: 1rem 3rem;
   overflow: hidden;
 }
 
-.navbar__links {
+header nav {
   display: flex;
   align-items: center;
-  list-style: none;
-  gap: 2rem;
+  gap: 3rem;
 }
 
-.navbar__link a {
-  color: white;
+header nav a {
+  color: #fff;
   text-decoration: none;
   font-size: 1.2rem;
+  font-weight: 500;
 }
 
-.navbar__link a:hover {
-  color: #f5c518;
+header nav a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
-.navbar__logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
+.header_logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-right: 5rem;
 }
 
-.navbar__icons {
+.header_icons {
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 1.5rem;
+  margin-left: 5rem;
 }
 
-.navbar_cart_icon {
+.header_icons svg {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.header_icons .cart {
   display: flex;
   align-items: center;
-  gap: 0.1rem;
+  gap: 0.2rem;
+  color: #fff;
 }
 
-.navbar__icons svg {
-  cursor: pointer;
-}
-
-.nav_toggle {
+.header_toggle {
   display: none;
-  background-color: transparent;
-  border: none;
-}
-
-.nav_toggle svg {
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: white;
 }
 
 /* reponsive */
 
 @media screen and (max-width: 768px) {
-  .navbar {
-    padding: 1rem 1rem;
+  header {
+    padding: 1rem;
   }
 
-  .nav_toggle {
+  header nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    transition: all 0.5s ease;
+    transform: translateX(-100%);
+    z-index: 999;
+  }
+
+  header .responsive_nav {
+    transform: translateX(-10%);
+  }
+
+  header .responsive_nav a {
+  }
+
+  .header_logo {
+    font-size: 2rem;
+    margin-left: 2.5rem;
+    margin-right: 0;
+  }
+
+  .header_icons {
+    margin-left: 2rem;
+  }
+
+  .header_toggle {
     display: block;
-  }
-
-  .navbar__links {
-    display: none;
-  }
-
-  .navbar__logo {
-    margin-left: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
   }
 }
