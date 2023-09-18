@@ -1,15 +1,14 @@
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Admin from "./pages/admin/Admin";
-import Client from "./pages/client/Client";
+import AdminRoute from "./pages/admin/AdminRoute";
+import ClientRoute from "./pages/client/ClientRoute";
 
 function App() {
   return (
     <>
       <Router>
         <Switch>
-          <Route path="/admin" component={Admin} />
-          <Route path="/" component={Client} />
+          <Route path="/admin" component={AdminRoute} />
+          <Route path="/" component={ClientRoute} />
         </Switch>
       </Router>
     </>

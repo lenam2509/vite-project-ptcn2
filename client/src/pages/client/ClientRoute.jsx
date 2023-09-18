@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 import Products from "./Products";
 import Footer from "../../components/Footer";
 
-export default function Client() {
+export default function ClientRoute() {
   return (
     <Router>
       <Navbar />
