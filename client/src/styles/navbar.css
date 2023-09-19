@@ -1,12 +1,13 @@
 header {
   width: 100%;
-  height: 100%;
   background-color: #1a1a1a;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem;
-  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 header nav {
@@ -54,10 +55,94 @@ header nav a:hover {
   align-items: center;
   gap: 0.2rem;
   color: #fff;
+  position: relative;
+}
+
+.header_icons .cart_detail {
+  position: absolute;
+  top: 5rem;
+  right: 0.5rem;
+  width: 300px;
+  min-height: 200px;
+  background-color: #8d8b8b;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #f3f3f3f3;
+  flex-direction: column;
+  padding: 1rem;
+  display: none;
+}
+
+.header_icons .cart_detail::after {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  right: 3rem;
+  border: 1rem solid;
+  border-color: #8d8b8b transparent transparent transparent;
+}
+
+.header_icons .cart_detail.active_cart {
+  display: flex;
 }
 
 .header_toggle {
   display: none;
+}
+
+.header_icons .cart_item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.header_icons .cart_item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.header_icons .cart_item .cart_item_detail {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.header_icons .cart_item .cart_item_detail svg {
+  cursor: pointer;
+  color: red;
+  font-size: 1.2rem;
+}
+
+.header_icons .cart_total_money {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  gap: 0.2rem;
+}
+
+.header_icons .cart_btn .cart_btn_buy {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #21a332;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  margin-top: 0.5rem;
 }
 
 /* reponsive */
@@ -102,5 +187,17 @@ header nav a:hover {
     font-size: 1.5rem;
     cursor: pointer;
     color: #fff;
+  }
+
+  .header_icons .cart_detail {
+    width: 100%;
+    top: 4rem;
+    right: 0;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .header_icons .cart_detail::after {
+    display: none;
   }
 }

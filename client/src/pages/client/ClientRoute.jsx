@@ -8,10 +8,12 @@ export default function ClientRoute() {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/products" exact component={Products} />
-      </Switch>
+      <section style={{ minHeight: "100vh" }}>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/products" exact component={Products} />
+        </Switch>
+      </section>
       <Footer />
     </Router>
   );
