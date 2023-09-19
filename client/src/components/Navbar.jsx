@@ -17,7 +17,7 @@ export default function Navbar() {
     },
     {
       label: "Sản phẩm",
-      to: "/",
+      to: "/products",
     },
     {
       label: "Sale",
