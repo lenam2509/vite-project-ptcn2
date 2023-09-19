@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AdminRoute from "./pages/admin/AdminRoute";
 import ClientRoute from "./pages/client/ClientRoute";
+import "./App.css";
 
 function App() {
   return (
