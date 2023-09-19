@@ -46,7 +46,9 @@ export default function Navbar() {
       <h2 className="header_logo">Logo</h2>
 
       <div className="header_icons">
-        <BiSolidUser />
+        <Link to="/login">
+          <BiSolidUser />
+        </Link>
         <div className="cart" onClick={toggleCart}>
           <BiSolidCart /> <span>0</span>
         </div>
