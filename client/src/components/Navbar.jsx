@@ -28,10 +28,6 @@ export default function Navbar() {
       to: "/products",
     },
     {
-      label: "Thanh toán",
-      to: "/checkout",
-    },
-    {
       label: "Liên hệ",
       to: "/",
     },
@@ -67,12 +63,12 @@ export default function Navbar() {
             </div>
             <BiSolidTrashAlt />
           </div>
-            
+
           <div className="cart_total_money">
             <p>Tổng tiền:</p> <span>100.000vnđ</span>
           </div>
           <div className="cart_btn">
-            <button className="cart_btn_buy">Thanh toán</button>
+            <button className="cart_btn_buy">Xem giỏ hàng</button>
           </div>
         </div>
       </div>
