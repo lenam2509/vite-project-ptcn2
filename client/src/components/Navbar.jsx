@@ -20,15 +20,19 @@ export default function Navbar() {
       to: "/",
     },
     {
+      label: "Giới thiệu",
+      to: "/",
+    },
+    {
       label: "Sản phẩm",
       to: "/products",
     },
     {
-      label: "Sale",
+      label: "Thanh toán",
       to: "/",
     },
     {
-      label: "Hóa đơn",
+      label: "Liên hệ",
       to: "/",
     },
   ];
