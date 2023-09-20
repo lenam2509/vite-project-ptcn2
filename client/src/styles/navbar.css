@@ -31,7 +31,7 @@ header nav a:hover {
   font-size: 2.5rem;
   font-weight: 700;
   color: #fff;
-  margin-right: 20rem;
+  margin-right: 10rem;
 }
 
 .header_icons {
@@ -63,18 +63,21 @@ header nav a:hover {
   right: 0.5rem;
   width: 300px;
   min-height: 200px;
-  background-color: #f3be76;
+  background-color: #fff;
   border-radius: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
   font-weight: 500;
-  color: #fff;
+  color: black;
   flex-direction: column;
   padding: 1rem;
   display: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+
 
 .header_icons .cart_detail::after {
   content: "";
@@ -99,14 +102,14 @@ header nav a:hover {
   width: 100%;
   gap: 1rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid black;
   padding-bottom: 1rem;
   padding-top: 1rem;
 }
 
 .header_icons .cart_item img {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 0.5rem;
 }
@@ -118,9 +121,27 @@ header nav a:hover {
   justify-content: flex-start;
 }
 
-.header_icons .cart_item .cart_item_detail svg {
+.cart_item_detail h3{
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.cart_item_detail .price{
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f52814;
+}
+
+.cart_item_detail .quantity{
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.header_icons .cart_item svg {
   cursor: pointer;
-  color: #fff;
+  color: red;
   font-size: 1.2rem;
 }
 
@@ -142,6 +163,8 @@ header nav a:hover {
   font-weight: 800;
   cursor: pointer;
   margin-top: 0.5rem;
+  text-transform: uppercase;
+  border: none;
 }
 
 /* reponsive */
