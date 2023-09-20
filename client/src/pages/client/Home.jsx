@@ -54,6 +54,9 @@ export default function Home() {
       </div>
       <div className="container4">
         <h1>Sản phẩm nổi bật</h1>
+        <div className="trending_products">
+          <div className="trending_product_box"></div>
+        </div>
       </div>
     </>
   );
