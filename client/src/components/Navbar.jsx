@@ -24,7 +24,7 @@ export default function Navbar() {
       to: "/",
     },
     {
-      label: "Sản phẩm",
+      label: "Thực đơn",
       to: "/products",
     },
     {
@@ -61,12 +61,13 @@ export default function Navbar() {
           <div className="cart_item">
             <img src="https://picsum.photos/200/300" alt="" />
             <div className="cart_item_detail">
-              <h3>SamSung 15galaxy</h3>
+              <h3>Trà sữa</h3>
               <p>100.000</p>
-              <p>5x</p>
-              <BiSolidTrashAlt />
+              <p>x5</p>
             </div>
+            <BiSolidTrashAlt />
           </div>
+            
           <div className="cart_total_money">
             <p>Tổng tiền:</p> <span>100.000vnđ</span>
           </div>
