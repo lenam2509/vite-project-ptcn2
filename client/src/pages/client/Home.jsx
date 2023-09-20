@@ -1,5 +1,7 @@
+import ProductCard from "../../components/ProductCard";
 import SlideBaner from "../../components/SlideBaner";
 import "../../styles/home.css";
+
 export default function Home() {
   return (
     <>
@@ -54,8 +56,11 @@ export default function Home() {
       </div>
       <div className="container4">
         <h1>Sản phẩm nổi bật</h1>
-        <div className="trending_products">
-          <div className="trending_product_box"></div>
+        <div className="box_container">
+          <ProductCard name={"Trà vải"} price={50000} />
+          <ProductCard name={"Trà vải"} price={50000} />
+          <ProductCard name={"Trà vải"} price={50000} />
+          <ProductCard name={"Trà vải"} price={50000} />
         </div>
       </div>
     </>

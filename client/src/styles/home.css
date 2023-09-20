@@ -71,7 +71,7 @@
 
 .container4 {
   width: 100%;
-  min-height: 200px;
+  min-height: 300px;
   background: whitesmoke;
   margin-top: 50px;
 }
@@ -82,6 +82,17 @@
   font-weight: 700;
   padding-top: 20px;
 }
+
+.container4 .box_container{
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 200px;
+}
+
 
 
 
