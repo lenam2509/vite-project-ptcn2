@@ -52,10 +52,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-       <div className="container4">
+      <div className="container4">
         <h1>Sản phẩm nổi bật</h1>
-        
-       </div>
+      </div>
     </>
   );
 }

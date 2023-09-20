@@ -69,11 +69,19 @@
   padding: 0.5rem;
 }
 
+.container4 {
+  width: 100%;
+  min-height: 200px;
+  background: whitesmoke;
+  margin-top: 50px;
+}
 
-
-
-
-
+.container4 h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding-top: 20px;
+}
 
 /* reponsive */
 
