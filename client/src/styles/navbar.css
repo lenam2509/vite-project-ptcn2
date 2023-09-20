@@ -1,6 +1,6 @@
 header {
   width: 100%;
-  background-color: #1a1a1a;
+  background-color: #f3be76;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,8 +24,7 @@ header nav a {
 }
 
 header nav a:hover {
-  color: #fff;
-  text-decoration: underline;
+  color: #4d351d;
 }
 
 .header_logo {
@@ -132,7 +131,6 @@ header nav a:hover {
   color: #fff;
   display: flex;
   gap: 0.2rem;
-
 }
 
 .header_icons .cart_btn .cart_btn_buy {

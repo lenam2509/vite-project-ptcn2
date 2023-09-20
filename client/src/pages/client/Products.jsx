@@ -20,6 +20,7 @@ export default function Products() {
         <div className="products_sorter">
           <p>Sắp xếp theo</p>
           <select>
+            <option>Mặc định</option>
             <option value="1">Giá tăng dần</option>
             <option value="2">Giá giảm dần</option>
             <option value="3">Tên A-Z</option>

@@ -6,7 +6,7 @@ import baner2 from "../assets/images/baner2.jpg";
 export default function SlideBaner() {
   const images = [baner1, baner2];
   return (
-    <Slide autoplay duration={2000}>
+    <Slide>
       {images.map((image, index) => (
         <div key={index} className="each-slide-effect">
           <img src={image} alt="" />

@@ -29,7 +29,7 @@ export default function Navbar() {
     },
     {
       label: "Thanh toán",
-      to: "/",
+      to: "/checkout",
     },
     {
       label: "Liên hệ",
@@ -47,7 +47,7 @@ export default function Navbar() {
         ))}
       </nav>
 
-      <h2 className="header_logo">Logo</h2>
+      <h2 className="header_logo">Food Station</h2>
 
       <div className="header_icons">
         <Link to="/login">

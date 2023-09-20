@@ -6,7 +6,7 @@ import "../styles/productcard.css";
 export default function ProductCard({ name, img, price }) {
   return (
     <div className="product_card">
-      <Link to="/">
+      <Link to="/product/1">
         <div className="product_card_img">
           <img src={img ? img : Product} alt="" />
         </div>
