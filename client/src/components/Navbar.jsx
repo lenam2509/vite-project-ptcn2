@@ -24,7 +24,7 @@ export default function Navbar() {
     },
     {
       label: "Giới thiệu",
-      to: "/",
+      to: "/about",
     },
     {
       label: "Thực đơn",
@@ -32,7 +32,7 @@ export default function Navbar() {
     },
     {
       label: "Liên hệ",
-      to: "/",
+      to: "/contact",
     },
   ];
   return (

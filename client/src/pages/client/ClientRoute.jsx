@@ -8,6 +8,8 @@ import ProductDetail from "./ProductDetail";
 import Checkout from "./Checkout";
 import Cart from "./Cart";
 import ScrollTop from "../../components/ScrollTop";
+import About from "./About";
+import Contact from "./Contact";
 
 export default function ClientRoute() {
   return (
@@ -22,6 +24,8 @@ export default function ClientRoute() {
           <Route path="/product/:id" exact component={ProductDetail} />
           <Route path="/checkout" exact component={Checkout} />
           <Route path="/cart" exact component={Cart} />
+          <Route path="/about" exact component={About} />
+          <Route path="/contact" exact component={Contact} />
         </Switch>
       </section>
       <Footer />
