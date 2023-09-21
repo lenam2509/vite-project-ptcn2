@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  padding: 0 20px;
   color: #000;
 }
 
@@ -79,4 +78,88 @@
   margin-top: 10px;
   font-size: 1.2rem;
   line-height: 1.5;
+}
+
+.about_box3 {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  background: #f7f7f7;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.about_box3 .box {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: #fff; */
+}
+
+.about_box3 .box svg {
+  width: 50px;
+  height: 50px;
+  fill: #000;
+}
+
+.about_box3 .box h1 {
+  color: #f58634;
+}
+
+.about_box3 .box p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+.about_box4 {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  background: #fff;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  margin-top: 5rem;
+}
+
+.about_box4 .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about_box4 .about_teams {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1000px;
+}
+
+.about_teams .about_member_info {
+  width: 300px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  background: #f7f7f7;
+  align-items: center;
+  gap: 1rem;
+}
+
+.about_member_info .info_img {
+  width: 100%;
+  height: 300px;
+  background: #000;
+  overflow: hidden;
+}
+
+.about_member_info .info_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
