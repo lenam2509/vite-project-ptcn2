@@ -113,6 +113,7 @@
   font-size: 1.2rem;
   margin-top: 10px;
   line-height: 1.5;
+  text-align: center;
 }
 
 .about_box4 {
@@ -135,7 +136,7 @@
 
 .about_box4 .about_teams {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap;
   gap: 1rem;
   max-width: 1000px;
@@ -162,4 +163,15 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.about_member_info h2 {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.about_member_info p {
+  font-size: 1.2rem;
+  text-align: center;
 }

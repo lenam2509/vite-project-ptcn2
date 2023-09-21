@@ -8,11 +8,16 @@ import Member1 from "../../assets/images/member1.jpg";
 export default function About() {
   const members = [
     { name: "Lê Việt Nam", img: Member1, position: "Web Dev" },
-    { name: "Lê Việt Nam", img: Member1, position: "Web Dev" },
-    { name: "Lê Việt Nam", img: Member1, position: "Web Dev" },
-    { name: "Lê Việt Nam", img: Member1, position: "Web Dev" },
-    { name: "Lê Việt Nam", img: Member1, position: "Web Dev" },
-    { name: "Lê Việt Nam", img: Member1, position: "Web Dev" },
+    { name: "Hoàng Ngọc Chí", img: Member1, position: "Thiết kế đồ họa" },
+    {
+      name: "Nguyễn Hoàng Thái Bảo Châu",
+      img: Member1,
+      position: "Thiết kế đồ họa",
+    },
+    { name: "Nguyễn Thị Thu Hằng", img: Member1, position: "Logistics" },
+    { name: "Huỳnh Thị Minh Thư", img: Member1, position: "Logistics" },
+    { name: "Huỳnh Thị Thi", img: Member1, position: "Logistics" },
+    { name: "Hồ Gia Vũ", img: Member1, position: "Logistics" },
   ];
   return (
     <div className="about_container">
@@ -40,9 +45,9 @@ export default function About() {
           </div>
           <h2>Uy tín</h2>
           <p>
-            Uy tín là điều Poly Food đã gây dựng và khẳng định được trong gần 10
-            năm qua. Chúng tôi sẽ tiếp tục giữ vững giá trị kinh doanh cốt lõi
-            này trong suốt chặng đường phía trước để phát triển bền vững.
+            Uy tín là điều Food Station đã gây dựng và khẳng định được trong gần
+            10 năm qua. Chúng tôi sẽ tiếp tục giữ vững giá trị kinh doanh cốt
+            lõi này trong suốt chặng đường phía trước để phát triển bền vững.
           </p>
         </div>
         <div className="box">
@@ -51,9 +56,9 @@ export default function About() {
           </div>
           <h2>Đồng Hành</h2>
           <p>
-            Đồng hành là cam kết và cũng là giá trị nổi bật của Poly Food. Chúng
-            tôi đồng hành cùng nhà cung cấp, đồng hành cùng khách hàng và đồng
-            hành cùng khách hàng của khách hàng.
+            Đồng hành là cam kết và cũng là giá trị nổi bật của Food Station.
+            Chúng tôi đồng hành cùng nhà cung cấp, đồng hành cùng khách hàng và
+            đồng hành cùng khách hàng của khách hàng.
           </p>
         </div>
         <div className="box">
@@ -63,7 +68,7 @@ export default function About() {
           <h2>Trách Nhiệm</h2>
           <p>
             Trách nhiệm là nền tảng tạo nên chất lượng của sản phẩm & dịch vụ
-            của Poly Food, từ đó mới khiến khách hàng hài lòng và gắn bó lâu
+            của Food Station, từ đó mới khiến khách hàng hài lòng và gắn bó lâu
             dài.
           </p>
         </div>
