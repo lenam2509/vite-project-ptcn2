@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 import { useRef } from "react";
 import Product from "../assets/images/product.jpg";
+import Logo from "../assets/images/logo.jpg";
+
 export default function Navbar() {
   const NavRef = useRef();
   const CartRef = useRef();
@@ -44,7 +46,11 @@ export default function Navbar() {
         ))}
       </nav>
 
-      <h2 className="header_logo">Food Station</h2>
+      <h2 className="header_logo">
+        <Link to="/">
+          <img src={Logo} alt="" />
+        </Link>
+      </h2>
 
       <div className="header_icons">
         <Link to="/login">
@@ -69,7 +75,9 @@ export default function Navbar() {
             <p>Tổng tiền:</p> <span>100.000đ</span>
           </div>
           <div className="cart_btn">
-            <button className="cart_btn_buy">Xem giỏ hàng</button>
+            <Link to="/cart" className="cart_btn_buy">
+              Xem giỏ hàng
+            </Link>
           </div>
         </div>
       </div>

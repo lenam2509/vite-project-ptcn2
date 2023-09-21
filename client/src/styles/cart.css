@@ -1,0 +1,10 @@
+
+.cart_container{
+    width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background: whitesmoke;
+}
+

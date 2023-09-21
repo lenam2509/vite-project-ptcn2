@@ -19,8 +19,8 @@ header nav {
 header nav a {
   color: #fff;
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 header nav a:hover {
@@ -31,14 +31,24 @@ header nav a:hover {
   font-size: 2.5rem;
   font-weight: 700;
   color: #fff;
-  margin-right: 10rem;
+  margin-right: 20rem;
+  width: 150px;
+  height: 150px;
+}
+
+.header_logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  cursor: pointer;
 }
 
 .header_icons {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-left: 5rem;
 }
 
 .header_icons svg {
@@ -59,7 +69,7 @@ header nav a:hover {
 
 .header_icons .cart_detail {
   position: absolute;
-  top: 5rem;
+  top: 8rem;
   right: 0.5rem;
   width: 300px;
   min-height: 200px;
@@ -76,8 +86,6 @@ header nav a:hover {
   display: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
-
 
 .header_icons .cart_detail::after {
   content: "";
@@ -121,19 +129,19 @@ header nav a:hover {
   justify-content: flex-start;
 }
 
-.cart_item_detail h3{
+.cart_item_detail h3 {
   font-size: 1.2rem;
   font-weight: 700;
   color: #000;
 }
 
-.cart_item_detail .price{
+.cart_item_detail .price {
   font-size: 1rem;
   font-weight: 700;
   color: #f52814;
 }
 
-.cart_item_detail .quantity{
+.cart_item_detail .quantity {
   font-size: 1rem;
   font-weight: 700;
   color: #000;
@@ -152,19 +160,21 @@ header nav a:hover {
   color: #f52814;
   display: flex;
   gap: 0.2rem;
+  margin-bottom: 1rem;
 }
 
 .header_icons .cart_btn .cart_btn_buy {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: #21a332;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  background-color: green;
   color: #fff;
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
+  border-radius: 0.5rem;
   cursor: pointer;
-  margin-top: 0.5rem;
   text-transform: uppercase;
-  border: none;
 }
 
 /* reponsive */
