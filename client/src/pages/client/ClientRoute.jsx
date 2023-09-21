@@ -14,7 +14,7 @@ export default function ClientRoute() {
     <Router>
       <ScrollTop />
       <Navbar />
-      <section style={{ minHeight: "100vh" }}>
+      <section style={{ minHeight: "1vh" }}>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/products" exact component={Products} />
