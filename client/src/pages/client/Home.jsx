@@ -1,5 +1,7 @@
 import ProductCard from "../../components/ProductCard";
 import SlideBaner from "../../components/SlideBaner";
+import baner1 from "../../assets/images/baner1.jpg";
+import baner3 from "../../assets/images/baner3.jpg";
 import "../../styles/home.css";
 
 export default function Home() {
@@ -32,25 +34,16 @@ export default function Home() {
         <h1>Danh mục nổi bật</h1>
         <div className="box_container">
           <div className="box">
-            <img
-              src="https://images.unsplash.com/photo-1694681733456-05c706f280b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
+            <img src={baner1} alt="" />
+            <div className="content">Trà sữa</div>
+          </div>
+          <div className="box">
+            <img src={baner1} alt="" />
             <div className="content">Lorem</div>
           </div>
           <div className="box">
-            <img
-              src="https://images.unsplash.com/photo-1694681733456-05c706f280b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <div className="content">Lorem</div>
-          </div>
-          <div className="box">
-            <img
-              src="https://images.unsplash.com/photo-1694681733456-05c706f280b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDJ8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
-            <div className="content">Lorem</div>
+            <img src={baner3} alt="" />
+            <div className="content">Bánh snack</div>
           </div>
         </div>
       </div>

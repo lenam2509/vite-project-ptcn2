@@ -26,16 +26,10 @@ export default function About() {
       <div className="breakrum"></div>
       <div className="about_box">
         <p>
-          Hơn 10 năm hình thành và phát triển, thương hiệu thực phẩm đồ ăn vặt
-          “Food Station” đã khẳng định được uy tín của mình trên thị trường với
-          đa dạng mặt hàng, chất lượng dịch vụ, chất lượng sản phẩm. Chúng tôi
-          luôn hướng tới sức khỏe người tiêu dùng luôn được đặt lên hàng đầu,
-          cam kết sản phẩm đưa ra luôn được đảm bảo, uy tín, nguồn gốc xuất xứ
-          rõ ràng, giấy tờ pháp lý đầy đủ, không chất phụ gia, không chất bảo
-          quản, được sản xuất sạch sẽ, vệ sinh an toàn thực phẩm, đảm bảo sức
-          khỏe người tiêu dùng. Điều đó làm nên thương hiệu “Food Station” chúng
-          tôi ngày hôm nay. Chúng tôi luôn cố gắng để phục vụ tốt nhất đến quý
-          khách hàng.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
+          reprehenderit architecto itaque accusamus modi doloremque ullam
+          aspernatur. Incidunt vero suscipit sint soluta explicabo nisi non,
+          quasi quidem molestiae voluptatem quaerat quibusdam, voluptatum quas
         </p>
       </div>
       <div className="about_box2">

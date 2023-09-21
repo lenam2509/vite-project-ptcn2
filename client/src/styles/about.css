@@ -136,7 +136,7 @@
 
 .about_box4 .about_teams {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
   max-width: 1000px;

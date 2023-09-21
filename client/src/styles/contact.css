@@ -1,0 +1,111 @@
+.contact_container {
+  margin-top: 50px;
+  width: 1500px;
+  margin: 0 auto;
+  background: #fff;
+  min-height: 1000px;
+  padding: 1rem;
+}
+
+.google_map_container {
+  width: 100%;
+  height: 500px;
+  background: #fff;
+  margin-bottom: 1rem;
+}
+
+.contact_info_form_container {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  gap: 1rem;
+}
+
+.contact_info_form_container .left {
+  width: 30%;
+  min-height: 100%;
+  background-color: #f3f3f3;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.contact_info_form_container .left .left_row {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.contact_info_form_container .left .left_row svg {
+  font-size: 1.5rem;
+}
+
+.contact_info_form_container .left .media {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact_info_form_container .left .media .media_icons svg {
+  font-size: 2rem;
+  color: #000;
+  transition: all 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.contact_info_form_container .right {
+  width: 70%;
+  min-height: 100%;
+  background-color: #f3f3f3;
+  padding: 1rem;
+}
+
+.contact_info_form_container .right form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.contact_info_form_container .right form .form_control {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.contact_info_form_container .right form .form_control input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  outline: none;
+  border-radius: 5px;
+}
+
+.contact_info_form_container .right form .form_control textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  outline: none;
+  border-radius: 5px;
+  resize: none;
+}
+
+.contact_info_form_container .right form button {
+  width: 50%;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  background-color: #404040;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+}
