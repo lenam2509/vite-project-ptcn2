@@ -1,0 +1,152 @@
+.checkout_container {
+  width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.checkout_container .customer_info {
+  width: 50%;
+  /* background: #844c4c; */
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout_container .payment_info {
+  width: 50%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.customer_info h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.customer_info .form_group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.customer_info .form_group label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.customer_info .form_group input {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  border: 3px solid #f5f5f5;
+}
+
+.customer_info .form_group textarea {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border: 3px solid #f5f5f5;
+  border-radius: 0.5rem;
+}
+
+.payment_info h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.payment_info .payment_info_container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: #f5f5f5;
+  min-height: 500px;
+  padding: 1rem;
+}
+
+.payment_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #000;
+  padding: 1rem 0;
+}
+
+.payment_row .title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.payment_row .name {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.payment_row .price {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.payment_row .total_price {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: red;
+}
+
+.notify_checkout p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.notify_checkout span {
+  font-size: 1.5rem;
+  color: rgb(245, 134, 52);
+}
+
+.scan_qr_checkout {
+  display: flex;
+  width: 300px;
+  height: 400px;
+}
+
+.scan_qr_checkout img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.payment_btns {
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment_btns .btn {
+  width: 100%;
+  height: 100%;
+  background: #f58634;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.payment_btns .btn:hover {
+  background: #ddd;
+  color: #000;
+}
