@@ -27,7 +27,7 @@ export default function Navbar() {
       to: "/about",
     },
     {
-      label: "Thực đơn",
+      label: "Sản phẩm",
       to: "/products",
     },
     {

@@ -55,7 +55,7 @@ export default function Checkout() {
           </div>
           <div className="payment_row">
             <span className="name">Chi phí vận chuyển</span>
-            <span className="price">sẽ được liên hệ sau</span>
+            <span className="price">miễn phí</span>
           </div>
           <div className="payment_row">
             <span className="name">Tổng cộng</span>

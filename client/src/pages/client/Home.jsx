@@ -2,6 +2,12 @@ import ProductCard from "../../components/ProductCard";
 import SlideBaner from "../../components/SlideBaner";
 import baner1 from "../../assets/images/baner1.jpg";
 import baner3 from "../../assets/images/baner3.jpg";
+import {
+  GiEmeraldNecklace,
+  GiDiamondRing,
+  GiCrystalEarrings,
+  GiWatch,
+} from "react-icons/gi";
 import "../../styles/home.css";
 
 export default function Home() {
@@ -10,24 +16,24 @@ export default function Home() {
       <SlideBaner />
       <div className="container2">
         <div className="row">
-          <h1>Logo</h1>
-          <h2>Lorem Ipsum</h2>
-          <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
+          <GiEmeraldNecklace />
+          <h2>Dây chuyền</h2>
+          <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
         </div>
         <div className="row">
-          <h1>Logo</h1>
-          <h2>Lorem Ipsum</h2>
-          <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
+          <GiDiamondRing />
+          <h2>Nhẫn đeo tay</h2>
+          <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
         </div>
         <div className="row">
-          <h1>Logo</h1>
-          <h2>Lorem Ipsum</h2>
-          <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
+          <GiCrystalEarrings />
+          <h2>Bông tai</h2>
+          <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
         </div>
         <div className="row">
-          <h1>Logo</h1>
-          <h2>Lorem Ipsum</h2>
-          <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
+          <GiWatch />
+          <h2>Đồng hồ</h2>
+          <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
         </div>
       </div>
       <div className="container3">
@@ -50,10 +56,10 @@ export default function Home() {
       <div className="container4">
         <h1>Sản phẩm nổi bật</h1>
         <div className="box_container">
-          <ProductCard name={"Trà vải"} price={50000} />
-          <ProductCard name={"Trà vải"} price={50000} />
-          <ProductCard name={"Trà vải"} price={50000} />
-          <ProductCard name={"Trà vải"} price={50000} />
+          <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+          <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+          <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+          <ProductCard name={"Dây chuyền trái tim"} price={250000} />
         </div>
       </div>
     </>

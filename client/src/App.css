@@ -8,3 +8,10 @@
 a {
   text-decoration: none;
 }
+
+:root {
+  --main-color: #fff;
+  --btn-buy: #6b278c;
+  --btn-checkout: #da2032;
+  --text-color: #000;
+}

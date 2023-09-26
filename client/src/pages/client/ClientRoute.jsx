@@ -19,13 +19,13 @@ export default function ClientRoute() {
       <section style={{ minHeight: "1vh" }}>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/products" exact component={Products} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/product/:id" exact component={ProductDetail} />
-          <Route path="/checkout" exact component={Checkout} />
-          <Route path="/cart" exact component={Cart} />
-          <Route path="/about" exact component={About} />
-          <Route path="/contact" exact component={Contact} />
+          <Route path="/products" component={Products} />
+          <Route path="/login" component={Login} />
+          <Route path="/product/:id" component={ProductDetail} />
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/cart" component={Cart} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
         </Switch>
       </section>
       <Footer />
