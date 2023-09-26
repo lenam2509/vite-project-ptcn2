@@ -14,6 +14,7 @@ export default function AdminRoute() {
         <Sidebar />
         <div style={{ padding: "1rem", width: "100%" }}>
           <Switch>
+            <Route path="/admin" exact component={Dashboard} />
             <Route path="/admin/dashboard" exact component={Dashboard} />
             <Route path="/admin/products" exact component={Products} />
             <Route path="/admin/bills" exact component={Bills} />
