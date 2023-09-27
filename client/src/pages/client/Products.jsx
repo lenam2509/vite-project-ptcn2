@@ -41,16 +41,16 @@ export default function Products() {
         </div>
       </div> */}
       <div className="products_container">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+        <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+        <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+        <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+        <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+        <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+        <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+        <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+        <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+        <ProductCard name={"Dây chuyền trái tim"} price={250000} />
       </div>
     </div>
   );

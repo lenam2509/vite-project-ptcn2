@@ -69,7 +69,7 @@
   color: red;
 }
 
-.cart_container table tbody tr td.delete svg{
+.cart_container table tbody tr td.delete svg {
   cursor: pointer;
 }
 
@@ -131,7 +131,7 @@
 .cart_total .total_price span {
   font-size: 20px;
   font-weight: bold;
-  color: #f58634;
+  color: var(--btn-checkout);
 }
 
 .cart_total button {
@@ -139,14 +139,9 @@
   padding: 10px 20px;
   border: none;
   outline: none;
-  background: #f58634;
+  background: var(--btn-checkout);
   cursor: pointer;
   font-size: 20px;
   border-radius: 1rem;
   color: #fff;
-}
-
-.cart_total button:hover {
-  background: #f3be76;
-  transition: all 0.5s ease;
 }

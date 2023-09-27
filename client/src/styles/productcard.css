@@ -7,7 +7,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.product_card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  transform: scale(1.02);
 }
 
 .product_card_img {
@@ -36,6 +41,7 @@
 .product_card_content h3 {
   font-size: 1.5rem;
   font-weight: 700;
+  text-align: center;
 }
 
 .product_card_content span {
@@ -47,7 +53,7 @@
 .product_card_content .btn_buy {
   width: 100%;
   padding: 0.5rem;
-  background: #f52814;
+  background: var(--btn-buy);
   border: none;
   color: #fff;
   text-align: center;
