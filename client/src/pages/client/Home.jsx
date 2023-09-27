@@ -2,6 +2,7 @@ import ProductCard from "../../components/ProductCard";
 import SlideBaner from "../../components/SlideBaner";
 import baner1 from "../../assets/images/baner1.jpg";
 import baner3 from "../../assets/images/baner3.jpg";
+import baner4 from "../../assets/images/baner4.jpg";
 import "../../styles/home.css";
 
 export default function Home() {
@@ -38,8 +39,8 @@ export default function Home() {
             <div className="content">Trà sữa</div>
           </div>
           <div className="box">
-            <img src={baner1} alt="" />
-            <div className="content">Lorem</div>
+            <img src={baner4} alt="" />
+            <div className="content">Combo</div>
           </div>
           <div className="box">
             <img src={baner3} alt="" />
