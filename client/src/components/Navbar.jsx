@@ -57,7 +57,7 @@ export default function Navbar() {
           <BiSolidUser />
         </Link>
         <div className="cart" onClick={toggleCart}>
-          <BiSolidCart /> <span>0</span>
+          <BiSolidCart /> <span style={{ color: "black" }}>0</span>
         </div>
         <div className="cart_detail" ref={CartRef}>
           <h2>Giỏ hàng</h2>

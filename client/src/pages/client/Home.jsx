@@ -2,9 +2,8 @@ import ProductCard from "../../components/ProductCard";
 import SlideBaner from "../../components/SlideBaner";
 import baner1 from "../../assets/images/baner1.jpg";
 import baner3 from "../../assets/images/baner3.jpg";
-<<<<<<< HEAD
 import baner4 from "../../assets/images/baner4.jpg";
-=======
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -14,7 +13,7 @@ import {
   GiCrystalEarrings,
   GiWatch,
 } from "react-icons/gi";
->>>>>>> e4b4b56e80dc76425f5a1b2041cc4e2df6b9fba1
+
 import "../../styles/home.css";
 
 export default function Home() {
@@ -66,16 +65,16 @@ export default function Home() {
         <h1>Danh mục nổi bật</h1>
         <div className="box_container">
           <div className="box">
-            <img src={baner1} alt="" />
-            <div className="content">Trà sữa</div>
+            <img src={baner4} alt="" />
+            <div className="content">Dây chuyền</div>
           </div>
           <div className="box">
-            <img src={baner4} alt="" />
+            <img src={baner1} alt="" />
             <div className="content">Combo</div>
           </div>
           <div className="box">
             <img src={baner3} alt="" />
-            <div className="content">Bánh snack</div>
+            <div className="content">Nhẫn đeo tay</div>
           </div>
         </div>
       </div>
