@@ -22,7 +22,7 @@ export default function About() {
   return (
     <div className="about_container">
       <h4>Giới thiệu</h4>
-      <h1>Chào mừng tới Food Station</h1>
+      <h1>Chào mừng tới J&6</h1>
       <div className="breakrum"></div>
       <div className="about_box">
         <p>
@@ -39,7 +39,7 @@ export default function About() {
           </div>
           <h2>Uy tín</h2>
           <p>
-            Uy tín là điều Food Station đã gây dựng và khẳng định được trong gần
+            Uy tín là điều J&6 đã gây dựng và khẳng định được trong gần
             10 năm qua. Chúng tôi sẽ tiếp tục giữ vững giá trị kinh doanh cốt
             lõi này trong suốt chặng đường phía trước để phát triển bền vững.
           </p>
@@ -50,7 +50,7 @@ export default function About() {
           </div>
           <h2>Đồng Hành</h2>
           <p>
-            Đồng hành là cam kết và cũng là giá trị nổi bật của Food Station.
+            Đồng hành là cam kết và cũng là giá trị nổi bật của J&6.
             Chúng tôi đồng hành cùng nhà cung cấp, đồng hành cùng khách hàng và
             đồng hành cùng khách hàng của khách hàng.
           </p>
@@ -62,7 +62,7 @@ export default function About() {
           <h2>Trách Nhiệm</h2>
           <p>
             Trách nhiệm là nền tảng tạo nên chất lượng của sản phẩm & dịch vụ
-            của Food Station, từ đó mới khiến khách hàng hài lòng và gắn bó lâu
+            của J&6, từ đó mới khiến khách hàng hài lòng và gắn bó lâu
             dài.
           </p>
         </div>
