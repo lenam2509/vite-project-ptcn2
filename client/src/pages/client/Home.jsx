@@ -15,6 +15,7 @@ import {
 } from "react-icons/gi";
 
 import "../../styles/home.css";
+import { useState } from "react";
 
 export default function Home() {
   const responsive = {
@@ -36,6 +37,7 @@ export default function Home() {
       items: 1,
     },
   };
+  const [hotProducts, setHotProducts] = useState(Array.from({ length: 5 }));
   return (
     <>
       <SlideBaner />
@@ -82,13 +84,13 @@ export default function Home() {
         <h1>Sản phẩm nổi bật</h1>
         <div className="box_container">
           <Carousel responsive={responsive} infinite={true} autoPlay>
-            <ProductCard name={"Dây chuyền trái tim"} price={250000} />
-            <ProductCard name={"Dây chuyền trái tim"} price={250000} />
-            <ProductCard name={"Dây chuyền trái tim"} price={250000} />
-            <ProductCard name={"Dây chuyền trái tim"} price={250000} />
-            <ProductCard name={"Dây chuyền trái tim"} price={250000} />
-            <ProductCard name={"Dây chuyền trái tim"} price={250000} />
-            <ProductCard name={"Dây chuyền trái tim"} price={250000} />
+            {hotProducts.map((item, index) => (
+              <ProductCard
+                key={index}
+                name={"Dây chuyền trái tim"}
+                price={250000}
+              />
+            ))}
           </Carousel>
         </div>
       </div>

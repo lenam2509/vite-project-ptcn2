@@ -96,7 +96,10 @@
   max-width: 1500px;
   margin: 0 auto;
   padding: 1rem;
-  
+}
+
+.react-multi-carousel-list button {
+  background: #dddd;
 }
 
 /* reponsive */
