@@ -1,14 +1,23 @@
-import { BiSolidUser, BiSolidCart, BiSolidTrashAlt } from "react-icons/bi";
+import {
+  BiSolidUser,
+  BiSolidCart,
+  BiSolidTrashAlt,
+  BiLogOut,
+} from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../styles/navbar.css";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Product from "../assets/images/product.jpg";
 import Logo from "../assets/images/logo.jpg";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Navbar() {
   const NavRef = useRef();
   const CartRef = useRef();
+  const history = useHistory();
+
   const toggleNav = () => {
     NavRef.current.classList.toggle("responsive_nav");
   };
@@ -16,6 +25,17 @@ export default function Navbar() {
   const toggleCart = () => {
     CartRef.current.classList.toggle("active_cart");
   };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    history.push("/login");
+    toast.success("Đăng xuất thành công", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+
+
 
   const Links = [
     {
@@ -35,6 +55,7 @@ export default function Navbar() {
       to: "/contact",
     },
   ];
+
   return (
     <header>
       <FaBars className="header_toggle" onClick={toggleNav} />
@@ -53,9 +74,12 @@ export default function Navbar() {
       </h2>
 
       <div className="header_icons">
-        <Link to="/login">
+        {localStorage.getItem("token") && <BiLogOut onClick={logout} />}
+
+        <Link to={localStorage.getItem("token") ? "/userinfo" : "/login"}>
           <BiSolidUser />
         </Link>
+
         <div className="cart" onClick={toggleCart}>
           <BiSolidCart /> <span style={{ color: "black" }}>0</span>
         </div>

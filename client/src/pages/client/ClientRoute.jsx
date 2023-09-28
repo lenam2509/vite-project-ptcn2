@@ -10,6 +10,7 @@ import Cart from "./Cart";
 import ScrollTop from "../../components/ScrollTop";
 import About from "./About";
 import Contact from "./Contact";
+import UserInfo from "./UserInfo";
 
 export default function ClientRoute() {
   return (
@@ -26,6 +27,7 @@ export default function ClientRoute() {
           <Route path="/cart" component={Cart} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
+          <Route path="/userinfo" component={UserInfo} />
         </Switch>
       </section>
       <Footer />
