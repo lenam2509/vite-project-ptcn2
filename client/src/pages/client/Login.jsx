@@ -3,8 +3,12 @@ import "../../styles/login.css";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/Slices/authSlice";
 export default function Login() {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const [changeForm, setChangeForm] = useState("dangnhap");
   const [loginForm, setLoginForm] = useState({
     email: "",
@@ -16,6 +20,8 @@ export default function Login() {
     fullname: "",
     confirmPassword: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [disable, setDisable] = useState(false);
 
   const onChange = (e) => {
     if (changeForm === "dangnhap") {
@@ -27,6 +33,8 @@ export default function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    setDisable(true);
     if (changeForm === "dangnhap") {
       console.log(loginForm);
       axios
@@ -40,8 +48,7 @@ export default function Login() {
             toast.success("Đăng nhập thành công", {
               position: toast.POSITION.TOP_CENTER,
             });
-            localStorage.setItem("token", res.data.token);
-            localStorage.setItem("user", JSON.stringify(res.data.userInfo));
+            dispatch(login(res.data));
             setLoginForm({
               email: "",
               password: "",
@@ -52,17 +59,29 @@ export default function Login() {
               fullname: "",
               confirmPassword: "",
             });
+            setLoading(false);
+            setDisable(false);
             history.push("/userinfo");
           }
         })
         .catch((err) => {
+          setLoading(false);
+          setDisable(false);
           console.log(err);
-          toast.error(err.response.data.message, {
-            position: toast.POSITION.TOP_CENTER,
-          });
+          if (err.response) {
+            toast.error(err.response.data.message, {
+              position: toast.POSITION.TOP_CENTER,
+            });
+          } else {
+            toast.error(err.message, {
+              position: toast.POSITION.TOP_CENTER,
+            });
+          }
         });
     } else {
       if (registerForm.password !== registerForm.confirmPassword) {
+        setLoading(false);
+        setDisable(false);
         return toast.error("Mật khẩu không khớp", {
           position: toast.POSITION.TOP_CENTER,
         });
@@ -75,6 +94,8 @@ export default function Login() {
           fullname: registerForm.fullname,
         })
         .then((res) => {
+          setLoading(false);
+          setDisable(false);
           console.log(res);
           if (res.status === 200) {
             toast.success("Đăng ký thành công", {
@@ -94,6 +115,8 @@ export default function Login() {
           }
         })
         .catch((err) => {
+          setLoading(false);
+          setDisable(false);
           console.log(err);
           toast.error(err.response.data.message, {
             position: toast.POSITION.TOP_CENTER,
@@ -142,8 +165,12 @@ export default function Login() {
             name="password"
             value={loginForm.password}
           />
-          <button type="submit" onClick={onSubmit}>
-            Đăng nhập
+          <button type="submit" disabled={disable} onClick={onSubmit}>
+            {loading ? (
+              <span className="loading loading-spinner loading-md"></span>
+            ) : (
+              "Đăng nhập"
+            )}
           </button>
         </form>
       ) : (
@@ -176,8 +203,12 @@ export default function Login() {
             onChange={onChange}
             value={registerForm.confirmPassword}
           />
-          <button type="submit" onClick={onSubmit}>
-            Đăng ký
+          <button type="submit" disabled={disable} onClick={onSubmit}>
+            {loading ? (
+              <span className="loading loading-spinner loading-md"></span>
+            ) : (
+              "Đăng ký"
+            )}
           </button>
         </form>
       )}

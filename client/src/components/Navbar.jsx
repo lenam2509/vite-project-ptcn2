@@ -12,11 +12,15 @@ import Product from "../assets/images/product.jpg";
 import Logo from "../assets/images/logo.jpg";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/Slices/authSlice";
 
 export default function Navbar() {
   const NavRef = useRef();
   const CartRef = useRef();
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   const toggleNav = () => {
     NavRef.current.classList.toggle("responsive_nav");
@@ -26,16 +30,13 @@ export default function Navbar() {
     CartRef.current.classList.toggle("active_cart");
   };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+  const Logout = () => {
+    dispatch(logout());
     history.push("/login");
     toast.success("Đăng xuất thành công", {
       position: toast.POSITION.TOP_CENTER,
     });
   };
-
-
 
   const Links = [
     {
@@ -74,9 +75,9 @@ export default function Navbar() {
       </h2>
 
       <div className="header_icons">
-        {localStorage.getItem("token") && <BiLogOut onClick={logout} />}
+        {isAuthenticated && <BiLogOut onClick={Logout} />}
 
-        <Link to={localStorage.getItem("token") ? "/userinfo" : "/login"}>
+        <Link to={isAuthenticated ? "/userinfo" : "/login"}>
           <BiSolidUser />
         </Link>
 

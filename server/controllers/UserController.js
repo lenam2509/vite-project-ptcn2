@@ -77,7 +77,7 @@ module.exports = {
                 status: true,
                 message: 'Đăng nhập thành công',
                 token,
-                userInfo:{
+                userInfo: {
                     id: currentUser._id,
                     email: currentUser.email,
                     fullname: currentUser.fullname,
