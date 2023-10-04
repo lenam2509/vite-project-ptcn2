@@ -7,7 +7,7 @@ const body_parser = require('body-parser');
 const db = require('./db/conectDB');
 const morgan = require('morgan');
 const userRouter = require('./routes/user.router');
-
+const categoryRouter = require('./routes/category.router');
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +30,7 @@ app.use((error, req, res, next) => {
 
 // Routes
 app.use('/api/users', userRouter);
+app.use('/api/categories', categoryRouter);
 
 
 const PORT = process.env.PORT || 2509;
