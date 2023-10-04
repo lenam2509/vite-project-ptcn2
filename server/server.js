@@ -4,6 +4,8 @@ const app = express();
 const colors = require('colors');
 const cors = require('cors');
 const body_parser = require('body-parser');
+const db = require('./db/conectDB');
+
 
 // Middlewares
 app.use(express.json());

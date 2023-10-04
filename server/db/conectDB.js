@@ -4,18 +4,18 @@ const colors = require('colors');
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'admin',
+    user: 'root',
     password: '',
     database: 'ptcn2'
 });
 
 connection.connect((err) => {
     if (err) {
-        console.error(`Error connecting to MySQL database: ${err.stack}`.red.bold);
+        console.log(`Error connecting to MySQL database: ${err.stack}`.red.bold);
         return;
     }
 
-    console.log(`Connected to MySQL database as id ${connection.threadId}`.yellow.bold);
+    console.log(`Connected to MySQL database as id ${connection.threadId}`.yellow);
 });
 
 module.exports = connection;
