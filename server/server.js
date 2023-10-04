@@ -8,10 +8,19 @@ const db = require('./db/conectDB');
 const morgan = require('morgan');
 const userRouter = require('./routes/user.router');
 const categoryRouter = require('./routes/category.router');
+
+
+
+app.use(cors({
+    credentials: true,
+    origin: ['http://localhost:3000']
+}));
+
+
+
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
 app.use(body_parser.json());
 app.use(morgan('dev'));
 
