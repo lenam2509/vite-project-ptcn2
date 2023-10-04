@@ -1,6 +1,6 @@
 import Member from "../../assets/images/member1.jpg";
 import { useSelector } from "react-redux";
-
+import { Link } from "react-router-dom";
 export default function UserInfo() {
   const { data } = useSelector((state) => state.auth);
 
@@ -59,6 +59,11 @@ export default function UserInfo() {
         />
       </div>
       <button className="btn btn-neutral mt-5">Cập nhật thông tin</button>
+      {data.userInfo.role === "admin" && (
+        <a href="/admin" className="btn btn-accent mt-5">
+          Vào trang quản trị
+        </a>
+      )}
     </div>
   );
 }

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/Slices/authSlice";
+import AxiosConfig from "../../axios/AxiosConfig";
 export default function Login() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -36,9 +37,9 @@ export default function Login() {
     setLoading(true);
     setDisable(true);
     if (changeForm === "dangnhap") {
-      console.log(loginForm);
-      axios
-        .post("http://localhost:2509/api/users/login", {
+
+      AxiosConfig
+        .post("/api/users/login", {
           email: loginForm.email,
           password: loginForm.password,
         })

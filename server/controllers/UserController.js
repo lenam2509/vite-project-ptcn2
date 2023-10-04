@@ -72,7 +72,7 @@ module.exports = {
                 id: currentUser._id,
                 role: currentUser.role
             }, process.env.JWT_ACCESS_SECRET, { expiresIn: '1d' });
-
+            res.cookie('token', token, { maxAge: 86400000, httpOnly: true });
             res.json({
                 status: true,
                 message: 'Đăng nhập thành công',
@@ -94,4 +94,18 @@ module.exports = {
         }
     },
 
+    async logout(req, res, next) {
+        const { token } = req.cookies;
+        if (!token) {
+            return res.status(400).json({
+                status: false,
+                message: 'Bạn chưa đăng nhập'
+            });
+        }
+        res.clearCookie('token');
+        res.json({
+            status: true,
+            message: 'Đăng xuất thành công',
+        });
+    },
 }
