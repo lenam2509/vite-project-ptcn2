@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/conectDB');
+const uploadCloud = require('../config/upload.config');
+const cloudinary = require('cloudinary').v2;
 
 // get all product
 router.get('/', (req, res) => {
@@ -41,17 +43,21 @@ router.delete('/:id', (req, res) => {
 });
 
 // insert product
-router.post('/', (req, res) => {
+router.post('/', uploadCloud.single('thumbnail'), (req, res) => {
     const { name, price, description, category_id } = req.body;
-    const thumbnail = req.file.path;
-    const query = `INSERT INTO product (name, price, description, category_id) VALUES ('${name}', '${price}', '${description}', '${category_id}')`
-    db.query(query, [name, price, description, category_id], (err, rows, fields) => {
+    const fileData = req.file;
+    const thumbnail = fileData.path;
+    const query = `INSERT INTO product (name, price, description, thumbnail, category_id) VALUES ('${name}', '${price}', '${description}', '${thumbnail}', '${category_id}')`;
+    db.query(query, [name, price, description, thumbnail, category_id], (err, rows, fields) => {
         if (!err) {
             res.json({ mesagge: 'Thêm thành công' });
         }
         else {
             console.log(err);
-            res.json({ mesagge: 'Có lỗi xảy ra' });
+            res.status(400).json({ mesagge: 'Có lỗi xảy ra' });
+            if (fileData) {
+                cloudinary.uploader.destroy(fileData.filename);
+            }
         }
     });
 });

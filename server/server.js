@@ -8,7 +8,7 @@ const db = require('./db/conectDB');
 const morgan = require('morgan');
 const userRouter = require('./routes/user.router');
 const categoryRouter = require('./routes/category.router');
-
+const productRouter = require('./routes/product.router');
 
 
 app.use(cors({
@@ -40,6 +40,7 @@ app.use((error, req, res, next) => {
 // Routes
 app.use('/api/users', userRouter);
 app.use('/api/categories', categoryRouter);
+app.use('/api/products', productRouter);
 
 
 const PORT = process.env.PORT || 2509;
