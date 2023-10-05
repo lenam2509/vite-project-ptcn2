@@ -4,11 +4,13 @@ const app = express();
 const colors = require('colors');
 const cors = require('cors');
 const body_parser = require('body-parser');
-const db = require('./db/conectDB');
 const morgan = require('morgan');
-const userRouter = require('./routes/user.router');
-const categoryRouter = require('./routes/category.router');
-const productRouter = require('./routes/product.router');
+const connectDB = require('./db/db');
+const categoryRouter = require('./routes/category.route');
+const productRouter = require('./routes/product.route');
+const userRouter = require('./routes/user.route');
+connectDB();
+// const categoryRouter = require('./routes/category.router');
 
 
 app.use(cors({
@@ -48,3 +50,5 @@ const PORT = process.env.PORT || 2509;
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`.yellow.bold);
 });
+
+
