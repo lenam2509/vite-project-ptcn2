@@ -85,7 +85,18 @@ export default function Login() {
           position: toast.POSITION.TOP_CENTER,
         });
       }
-
+      if (
+        registerForm.name === "" ||
+        registerForm.password === "" ||
+        registerForm.email === "" ||
+        registerForm.confirmPassword === ""
+      ) {
+        setLoading(false);
+        setDisable(false);
+        return toast.error("Vui lòng nhập đầy đủ thông tin", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+      }
       axios
         .post("http://localhost:2509/api/users/register", {
           email: registerForm.email,

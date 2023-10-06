@@ -13,10 +13,7 @@ connectDB();
 // const categoryRouter = require('./routes/category.router');
 
 
-app.use(cors({
-    credentials: true,
-    origin: ['http://localhost:3000']
-}));
+app.use(cors());
 
 
 
