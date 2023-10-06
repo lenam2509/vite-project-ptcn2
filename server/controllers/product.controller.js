@@ -3,12 +3,12 @@ const cloudinary = require('cloudinary').v2;
 
 const ProductController = {
     async addProduct(req, res) {
-        const { name, description, price, category, quantity, sold, shipping } = req.body;
+        const { name, description, price, category, quantity, sold, shipping, hot } = req.body;
         const fileData = req.file
         const photo = fileData.path
         const photo_id = fileData.filename
         try {
-            const payload = { name, description, price, category, quantity, sold, shipping, photo, photo_id }
+            const payload = { name, description, price, category, quantity, sold, shipping, photo, photo_id, hot }
             const product = new ProductModel(payload);
             await product.save();
             res.status(201).json({ product });
@@ -26,7 +26,7 @@ const ProductController = {
 
     async getAllProducts(req, res) {
         try {
-            const products = await ProductModel.find().populate('category');
+            const products = await ProductModel.find().populate('category').sort({ createdAt: -1 });
             res.status(200).json({ products });
         } catch (error) {
             res.status(500).json({
@@ -51,7 +51,7 @@ const ProductController = {
 
     async updateProduct(req, res) {
         const { id } = req.params;
-        const { name, description, price, category, quantity, sold, shipping } = req.body;
+        const { name, description, price, category, quantity, sold, shipping, hot } = req.body;
         const fileData = req.file
 
         try {
@@ -60,11 +60,11 @@ const ProductController = {
                 const photo_id = fileData.filename
                 const oldProduct = await ProductModel.findById(id);
                 await cloudinary.uploader.destroy(oldProduct.photo_id);
-                const payload = { name, description, price, category, quantity, sold, shipping, photo, photo_id }
+                const payload = { name, description, price, category, quantity, sold, shipping, photo, photo_id, hot }
                 const product = await ProductModel.findByIdAndUpdate(id, payload, { new: true });
                 res.status(200).json({ product });
             } else {
-                const payload = { name, description, price, category, quantity, sold, shipping }
+                const payload = { name, description, price, category, quantity, sold, shipping, hot }
                 const product = await ProductModel.findByIdAndUpdate(id, payload, { new: true });
                 res.status(200).json({ product });
             }

@@ -6,6 +6,7 @@ export default function Products() {
   const [arrays, setArrays] = useState(Array.from({ length: 5 }));
   const [category, setCategory] = useState([]);
   const [reloadPage, setreloadPage] = useState(false);
+  const [btnLoading, setbtnLoading] = useState(false);
   const fileInputRef = useRef(null);
   const [loading, setloading] = useState(false);
   const [payload, setPayload] = useState({
@@ -15,15 +16,13 @@ export default function Products() {
     description: "",
     category: "",
     photo: "",
-    hot: false,
+    hot: "",
   });
 
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.name]: e.target.value });
   };
-  const handleCheckbox = (e) => {
-    setPayload({ ...payload, [e.target.name]: e.target.checked });
-  };
+
   const handleImageChange = (e) => {
     setPayload({ ...payload, [e.target.name]: e.target.files[0] });
   };
@@ -66,7 +65,7 @@ export default function Products() {
             quantity: "",
             description: "",
             category: "",
-            hot: false,
+            hot: "",
           });
           fileInputRef.current.value = "";
           toast.success("Thêm sản phẩm thành công");
@@ -79,6 +78,46 @@ export default function Products() {
         setreloadPage(!reloadPage);
         setloading(false);
       }
+    }
+  };
+
+  const handleDelete = async (id) => {
+    const confirm = window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này ?");
+    if (confirm) {
+      try {
+        setbtnLoading(true);
+        const res = await AxiosConfig.delete(`/api/products/${id}`);
+        if (res.status === 200 || 201) {
+          toast.success("Xóa sản phẩm thành công");
+          setbtnLoading(false);
+          setreloadPage(!reloadPage);
+        }
+      } catch (error) {
+        console.log(error);
+        setbtnLoading(false);
+        toast.error("Xóa sản phẩm thất bại");
+      }
+    } else {
+      return;
+    }
+  };
+
+  const handleOpenModalEdit = async (id) => {
+    document.getElementById("my_modal_2").showModal();
+    try {
+      const res = await AxiosConfig.get(`/api/products/${id}`);
+      if (res.status === 200 || 201) {
+        setPayload({
+          name: res.data.product.name,
+          price: res.data.product.price,
+          quantity: res.data.product.quantity,
+          description: res.data.product.description,
+          category: res.data.product.category._id,
+          hot: res.data.product.hot,
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -107,7 +146,7 @@ export default function Products() {
     };
     getProducts();
     getCategories();
-  }, []);
+  }, [reloadPage]);
 
   return (
     <div>
@@ -117,6 +156,7 @@ export default function Products() {
       >
         Thêm sản phẩm
       </button>
+      {/* modal add product */}
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-center text-lg">Thêm sản phẩm mới</h3>
@@ -168,18 +208,18 @@ export default function Products() {
               ))}
             </select>
 
-            <div className="form-control">
-              <label className="label cursor-pointer">
-                <span className="label-text">Sản phẩm nổi bật ?</span>
-                <input
-                  type="checkbox"
-                  className="toggle"
-                  onChange={handleCheckbox}
-                  name="hot"
-                  value={payload.hot}
-                />
-              </label>
-            </div>
+            <select
+              className="select select-primary w-full max-w-xs"
+              onChange={handleChange}
+              name="hot"
+              value={payload.hot}
+            >
+              <option value={""} disabled>
+                Sảm phẩm nổi bật ?
+              </option>
+              <option value={true}>Có</option>
+              <option value={false}>Không</option>
+            </select>
             <input
               type="file"
               className="file-input file-input-bordered file-input-primary w-full max-w-xs"
@@ -188,6 +228,7 @@ export default function Products() {
               ref={fileInputRef}
             />
           </div>
+
           <div className="modal-action">
             <button
               className={`btn btn-success ${
@@ -197,6 +238,76 @@ export default function Products() {
             >
               Save
             </button>
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn btn-error">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+
+      {/* modal edit product */}
+      <dialog id="my_modal_2" className="modal">
+        <div className="modal-box">
+          <h3 className="font-bold text-center text-lg">Sửa sản phẩm</h3>
+          <div className="py-4 flex flex-col max-w-xs mx-auto gap-4">
+            <input
+              type="text"
+              placeholder="Tên sản phẩm"
+              className="input input-bordered input-primary w-full max-w-xs"
+              value={payload.name}
+              onChange={handleChange}
+            />
+            <input
+              type="number"
+              placeholder="Giá sản phẩm"
+              className="input input-bordered input-primary w-full max-w-xs"
+              value={payload.price}
+              onChange={handleChange}
+            />
+            <input
+              type="number"
+              placeholder="Số lượng "
+              className="input input-bordered input-primary w-full max-w-xs"
+              value={payload.quantity}
+              onChange={handleChange}
+            />
+            <textarea
+              className="textarea textarea-primary"
+              placeholder="Thông tin sản phẩm"
+              value={payload.description}
+              onChange={handleChange}
+            ></textarea>
+            <select
+              onChange={handleChange}
+              className="select select-primary w-full max-w-xs"
+            >
+              <option value={""} disabled>
+                Loại sản phẩm
+              </option>
+              {category.map((item, index) => (
+                <option value={item._id} key={index}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
+
+            <select className="select select-primary w-full max-w-xs">
+              <option value={""} onChange={handleChange} disabled>
+                Sảm phẩm nổi bật ?
+              </option>
+              <option value={true}>Có</option>
+              <option value={false}>Không</option>
+            </select>
+            <input
+              type="file"
+              className="file-input file-input-bordered file-input-primary w-full max-w-xs"
+              onChange={handleImageChange}
+            />
+          </div>
+
+          <div className="modal-action">
+            <button className="btn btn-success">Save</button>
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
               <button className="btn btn-error">Close</button>
@@ -218,6 +329,7 @@ export default function Products() {
               <th>Category</th>
               <th>Quantity</th>
               <th>Hot</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -228,28 +340,57 @@ export default function Products() {
                   <div className="loading loading-spinner loading-lg"></div>
                 </td>
               </tr>
-            ) : (
+            ) : arrays.length > 0 ? (
               arrays.map((item, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
-                    <img src={Image} alt="" className="w-20 h-20" />
+                    <img src={item?.photo} alt="" className="w-20 h-20" />
                   </td>
                   <td>{item?.name}</td>
-                  <td>{(item?.price).toLocaleString("vi-VN")}đ</td>
+                  <td>{item?.price.toLocaleString("vi-VN")}đ</td>
                   <td>{item?.category.name}</td>
                   <td>{item?.quantity}</td>
                   <td>{item?.hot ? "true" : "false"}</td>
+                  <td>
+                    <button
+                      className="btn btn-warning text-white mr-1"
+                      onClick={() => handleOpenModalEdit(item?._id)}
+                    >
+                      Sửa
+                    </button>
+
+                    <button
+                      className="btn btn-error text-white"
+                      onClick={() => handleDelete(item?._id)}
+                    >
+                      {btnLoading ? (
+                        <div className="loading loading-spinner loading-md"></div>
+                      ) : (
+                        "Xóa"
+                      )}
+                    </button>
+                  </td>
                 </tr>
               ))
+            ) : (
+              <tr>
+                <td colSpan="7" className="text-center">
+                  <div className="text-2xl font-bold">
+                    Không có sản phẩm nào
+                  </div>
+                </td>
+              </tr>
             )}
           </tbody>
         </table>
+
+        {/* pagination and total */}
         <div className="flex items-center mt-4">
           <div className="flex-[2]">Có tổng cộng {arrays.length} sản phẩm</div>
           <div className="join flex-[2]">
             <button className="join-item btn">«</button>
-            <button className="join-item btn">Page 22</button>
+            <button className="join-item btn">Page 1</button>
             <button className="join-item btn">»</button>
           </div>
         </div>
