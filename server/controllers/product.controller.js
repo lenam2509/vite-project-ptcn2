@@ -26,7 +26,7 @@ const ProductController = {
 
     async getAllProducts(req, res) {
         try {
-            const products = await ProductModel.find()
+            const products = await ProductModel.find().populate('category');
             res.status(200).json({ products });
         } catch (error) {
             res.status(500).json({

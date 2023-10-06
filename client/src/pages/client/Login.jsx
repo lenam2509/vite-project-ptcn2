@@ -18,7 +18,7 @@ export default function Login() {
   const [registerForm, setRegisterForm] = useState({
     email: "",
     password: "",
-    fullname: "",
+    name: "",
     confirmPassword: "",
   });
   const [loading, setLoading] = useState(false);
@@ -37,19 +37,17 @@ export default function Login() {
     setLoading(true);
     setDisable(true);
     if (changeForm === "dangnhap") {
-
-      AxiosConfig
-        .post("/api/users/login", {
-          email: loginForm.email,
-          password: loginForm.password,
-        })
+      AxiosConfig.post("/api/users/login", {
+        email: loginForm.email,
+        password: loginForm.password,
+      })
         .then((res) => {
           console.log(res);
-          if (res.status === 200) {
+          if (res.status === 200 || res.status === 201) {
+            dispatch(login(res.data));
             toast.success("Đăng nhập thành công", {
               position: toast.POSITION.TOP_CENTER,
             });
-            dispatch(login(res.data));
             setLoginForm({
               email: "",
               password: "",
@@ -57,7 +55,7 @@ export default function Login() {
             setRegisterForm({
               email: "",
               password: "",
-              fullname: "",
+              name: "",
               confirmPassword: "",
             });
             setLoading(false);
@@ -92,13 +90,13 @@ export default function Login() {
         .post("http://localhost:2509/api/users/register", {
           email: registerForm.email,
           password: registerForm.password,
-          fullname: registerForm.fullname,
+          name: registerForm.name,
         })
         .then((res) => {
           setLoading(false);
           setDisable(false);
           console.log(res);
-          if (res.status === 200) {
+          if (res.status === 200 || res.status === 201) {
             toast.success("Đăng ký thành công", {
               position: toast.POSITION.TOP_CENTER,
             });
@@ -110,7 +108,7 @@ export default function Login() {
             setRegisterForm({
               email: "",
               password: "",
-              fullname: "",
+              name: "",
               confirmPassword: "",
             });
           }
@@ -186,9 +184,9 @@ export default function Login() {
           <input
             type="text"
             placeholder="Họ tên"
-            name="fullname"
+            name="name"
             onChange={onChange}
-            value={registerForm.fullname}
+            value={registerForm.name}
           />
           <input
             type="password"

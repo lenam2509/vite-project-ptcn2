@@ -1,6 +1,6 @@
 import Member from "../../assets/images/member1.jpg";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+
 export default function UserInfo() {
   const { data } = useSelector((state) => state.auth);
 
@@ -18,7 +18,7 @@ export default function UserInfo() {
           type="text"
           placeholder="chưa có"
           className="input input-bordered w-full max-w-xs"
-          value={data?.userInfo.fullname || ""}
+          value={data?.name || ""}
           readOnly
         />
       </div>
@@ -30,7 +30,7 @@ export default function UserInfo() {
           type="text"
           placeholder="chưa có"
           className="input input-bordered w-full max-w-xs"
-          value={data?.userInfo.email || ""}
+          value={data?.email || ""}
           readOnly
         />
       </div>
@@ -42,7 +42,7 @@ export default function UserInfo() {
           type="text"
           placeholder="chưa có"
           className="input input-bordered w-full max-w-xs"
-          value={data?.userInfo.phone || ""}
+          value={data?.phone || ""}
           readOnly
         />
       </div>
@@ -54,12 +54,12 @@ export default function UserInfo() {
           type="text"
           placeholder="chưa có"
           className="input input-bordered w-full max-w-xs"
-          value={data?.userInfo.address || ""}
+          value={data?.address || ""}
           readOnly
         />
       </div>
       <button className="btn btn-neutral mt-5">Cập nhật thông tin</button>
-      {data.userInfo.role === "admin" && (
+      {data.role === "admin" && (
         <a href="/admin" className="btn btn-accent mt-5">
           Vào trang quản trị
         </a>

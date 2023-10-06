@@ -14,8 +14,7 @@ const AxiosConfig = axios.create({
 AxiosConfig.interceptors.request.use(
     config => {
         const token = localStorage.getItem('persist:auth') ? JSON.parse(localStorage.getItem('persist:auth')).token.slice(1, -1) : null;
-        console.log(token);
-        if (token != null) {
+        if (token) {
             config.headers['Authorization'] = `Bearer ${token}`;
         }
         return config;

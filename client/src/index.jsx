@@ -10,12 +10,12 @@ import { PersistGate } from "redux-persist/integration/react";
 import { persistor } from "./redux/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <>
     <ToastContainer />
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
       </PersistGate>
     </Provider>
-  </React.StrictMode>
+  </>
 );
