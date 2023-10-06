@@ -102,22 +102,94 @@ export default function Products() {
     }
   };
 
+  const handleCloseModal = () => {
+    document.getElementById("my_modal_1").close();
+    setPayload({
+      name: "",
+      price: "",
+      quantity: "",
+      description: "",
+      category: "",
+      hot: "",
+    });
+    fileInputRef.current.value = "";
+  };
+
   const handleOpenModalEdit = async (id) => {
     document.getElementById("my_modal_2").showModal();
+    setloading(true);
     try {
       const res = await AxiosConfig.get(`/api/products/${id}`);
       if (res.status === 200 || 201) {
         setPayload({
+          _id: res.data.product._id,
           name: res.data.product.name,
           price: res.data.product.price,
           quantity: res.data.product.quantity,
           description: res.data.product.description,
-          category: res.data.product.category._id,
+          category: { ...res.data.product.category },
           hot: res.data.product.hot,
         });
       }
+      setloading(false);
     } catch (error) {
       console.log(error);
+      setloading(false);
+    }
+  };
+
+  const handleEditSubmit = async (id) => {
+    if (
+      payload.name === "" ||
+      payload.price === "" ||
+      payload.quantity === "" ||
+      payload.description === "" ||
+      payload.category === "" ||
+      payload.hot === ""
+    ) {
+      toast.error("Vui lòng nhập đầy đủ thông tin");
+      return;
+    } else {
+      try {
+        setbtnLoading(true);
+        const formData = new FormData();
+        formData.append("name", payload.name);
+        formData.append("price", payload.price);
+        formData.append("quantity", payload.quantity);
+        formData.append("description", payload.description);
+        formData.append(
+          "category",
+          payload.category._id ? payload.category._id : payload.category
+        );
+        formData.append("photo", payload.photo);
+        formData.append("hot", payload.hot);
+        const res = await AxiosConfig.put(`/api/products/${id}`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        if (res.status === 200 || 201) {
+          document.getElementById("my_modal_2").close();
+          setPayload({
+            _id: "",
+            name: "",
+            price: "",
+            quantity: "",
+            description: "",
+            category: "",
+            hot: "",
+          });
+          fileInputRef.current.value = "";
+          toast.success("Sửa sản phẩm thành công");
+          setbtnLoading(false);
+          setreloadPage(!reloadPage);
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("Sửa sản phẩm thất bại");
+        setbtnLoading(false);
+        setreloadPage(!reloadPage);
+      }
     }
   };
 
@@ -240,7 +312,9 @@ export default function Products() {
             </button>
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
-              <button className="btn btn-error">Close</button>
+              <button className="btn btn-error" onClick={handleCloseModal}>
+                Close
+              </button>
             </form>
           </div>
         </div>
@@ -251,55 +325,86 @@ export default function Products() {
         <div className="modal-box">
           <h3 className="font-bold text-center text-lg">Sửa sản phẩm</h3>
           <div className="py-4 flex flex-col max-w-xs mx-auto gap-4">
+            {loading && (
+              <div className="loading loading-spinner loading-md"></div>
+            )}
             <input
               type="text"
               placeholder="Tên sản phẩm"
               className="input input-bordered input-primary w-full max-w-xs"
               value={payload.name}
+              name="name"
               onChange={handleChange}
             />
             <input
               type="number"
               placeholder="Giá sản phẩm"
               className="input input-bordered input-primary w-full max-w-xs"
-              value={payload.price}
               onChange={handleChange}
+              value={payload.price}
+              name="price"
             />
             <input
               type="number"
               placeholder="Số lượng "
               className="input input-bordered input-primary w-full max-w-xs"
-              value={payload.quantity}
               onChange={handleChange}
+              value={payload.quantity}
+              name="quantity"
             />
             <textarea
               className="textarea textarea-primary"
               placeholder="Thông tin sản phẩm"
-              value={payload.description}
               onChange={handleChange}
+              value={payload.description}
+              name="description"
             ></textarea>
             <select
               onChange={handleChange}
               className="select select-primary w-full max-w-xs"
+              name="category"
             >
               <option value={""} disabled>
                 Loại sản phẩm
               </option>
-              {category.map((item, index) => (
-                <option value={item._id} key={index}>
-                  {item.name}
-                </option>
-              ))}
+              <option value={payload.category._id}>
+                {payload.category.name}
+              </option>
+              {category.map(
+                (item, index) =>
+                  payload.category._id !== item._id && (
+                    <option value={item._id} key={index}>
+                      {item.name}
+                    </option>
+                  )
+              )}
             </select>
 
-            <select className="select select-primary w-full max-w-xs">
-              <option value={""} onChange={handleChange} disabled>
+            <select
+              className="select select-primary w-full max-w-xs"
+              name="hot"
+              onChange={handleChange}
+            >
+              <option value={""} disabled>
                 Sảm phẩm nổi bật ?
               </option>
-              <option value={true}>Có</option>
-              <option value={false}>Không</option>
+              {payload.hot === true ? (
+                <option value={true} selected>
+                  Có
+                </option>
+              ) : (
+                <option value={true}>Có</option>
+              )}
+              {payload.hot === false ? (
+                <option value={false} selected>
+                  Không
+                </option>
+              ) : (
+                <option value={false}>Không</option>
+              )}
             </select>
             <input
+              name="photo"
               type="file"
               className="file-input file-input-bordered file-input-primary w-full max-w-xs"
               onChange={handleImageChange}
@@ -307,10 +412,19 @@ export default function Products() {
           </div>
 
           <div className="modal-action">
-            <button className="btn btn-success">Save</button>
+            <button
+              className={`btn btn-success ${
+                btnLoading ? "loading loading-spinner loading-md" : ""
+              }`}
+              onClick={() => handleEditSubmit(payload._id)}
+            >
+              Save
+            </button>
             <form method="dialog">
               {/* if there is a button in form, it will close the modal */}
-              <button className="btn btn-error">Close</button>
+              <button className="btn btn-error" onClick={handleCloseModal}>
+                Close
+              </button>
             </form>
           </div>
         </div>
