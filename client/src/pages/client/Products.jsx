@@ -7,7 +7,25 @@ export default function Products() {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(8);
-  const [url, setUrl] = useState(`/api/products?page=${page}&limit=${limit}`);
+  const [url, setUrl] = useState(`/api/products?page=1&limit=8`);
+  const [prevdisabled, setPrevDisabled] = useState(false);
+  const [nextdisabled, setNextDisabled] = useState(false);
+
+  const handelNextPage = () => {
+    if (products.products?.length < limit) {
+      return setNextDisabled(true);
+    }
+    setPage(page + 1);
+    setUrl(`/api/products?page=${page + 1}&limit=${limit}`);
+  };
+
+  const handlePrevPage = () => {
+    if (page === 1) {
+      return setPrevDisabled(true);
+    }
+    setPage(page - 1);
+    setUrl(`/api/products?page=${page - 1}&limit=${limit}`);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -15,7 +33,7 @@ export default function Products() {
         setLoading(true);
         const res = await AxiosConfig.get(url);
         console.log(res);
-        setProducts(res.data.products);
+        setProducts(res.data);
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -23,7 +41,7 @@ export default function Products() {
       }
     };
     fetchProducts();
-  }, []);
+  }, [page, limit, url]);
 
   return (
     <div>
@@ -56,8 +74,8 @@ export default function Products() {
       <div className="products_container">
         {loading ? (
           <div className="loading loading-spinner loading-lg"></div>
-        ) : (
-          products.map((product) => (
+        ) : products.products?.length > 0 ? (
+          products.products.map((product) => (
             <ProductCard
               key={product._id}
               name={product.name}
@@ -66,14 +84,30 @@ export default function Products() {
               id={product._id}
             />
           ))
+        ) : (
+          <div className="text-2xl font-bold text-center">
+            Không có sản phẩm nào
+          </div>
         )}
       </div>
-      
+
       <div className="flex justify-center">
         <div className="join">
-          <button className="join-item btn">«</button>
-          <button className="join-item btn">Page {page}</button>
-          <button className="join-item btn">»</button>
+          <button
+            className="join-item btn"
+            disabled={prevdisabled || page === 1}
+            onClick={handlePrevPage}
+          >
+            «
+          </button>
+          <button className="join-item btn">Trang {page}</button>
+          <button
+            className="join-item btn"
+            disabled={nextdisabled || products.products?.length < limit}
+            onClick={handelNextPage}
+          >
+            »
+          </button>
         </div>
       </div>
     </div>

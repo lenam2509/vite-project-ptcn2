@@ -48,6 +48,7 @@ const ProductController = {
                     totalProducts: count,
                     totalPages,
                     currentPage: parsedPage,
+                    limit: parsedLimit,
                     products
                 });
             } else {
@@ -65,6 +66,7 @@ const ProductController = {
                     totalProducts: count,
                     totalPages,
                     currentPage: parsedPage,
+                    limit: parsedLimit,
                     products
                 });
             }
