@@ -25,16 +25,59 @@ const ProductController = {
     },
 
     async getAllProducts(req, res) {
+        const { page, limit, hot } = req.query;
+        const defaultLimit = 5;
+        const defaultPage = 1;
+
+        const parsedLimit = parseInt(limit) || defaultLimit;
+        const parsedPage = parseInt(page) || defaultPage;
+
         try {
-            const products = await ProductModel.find().populate('category').sort({ createdAt: -1 });
-            res.status(200).json({ products });
+            if (hot) {
+                const products = await ProductModel
+                    .find({ hot: hot })
+                    .populate('category')
+                    .limit(parsedLimit)
+                    .skip((parsedPage - 1) * parsedLimit)
+                    .sort({ createdAt: -1 });
+
+                const count = await ProductModel.countDocuments();
+                const totalPages = Math.ceil(count / parsedLimit);
+
+                res.status(200).json({
+                    totalProducts: count,
+                    totalPages,
+                    currentPage: parsedPage,
+                    products
+                });
+            } else {
+                const products = await ProductModel
+                    .find()
+                    .populate('category')
+                    .limit(parsedLimit)
+                    .skip((parsedPage - 1) * parsedLimit)
+                    .sort({ createdAt: -1 });
+
+                const count = await ProductModel.countDocuments();
+                const totalPages = Math.ceil(count / parsedLimit);
+
+                res.status(200).json({
+                    totalProducts: count,
+                    totalPages,
+                    currentPage: parsedPage,
+                    products
+                });
+            }
         } catch (error) {
+            console.log(error);
             res.status(500).json({
                 message: 'Server error'
             });
-            console.log(error);
         }
     },
+
+
+
 
     async getOneProduct(req, res) {
         const { id } = req.params;

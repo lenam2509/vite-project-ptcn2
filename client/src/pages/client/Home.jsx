@@ -5,7 +5,7 @@ import baner3 from "../../assets/images/baner3.jpg";
 import baner4 from "../../assets/images/baner4.jpg";
 
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+
 
 import {
   GiEmeraldNecklace,
@@ -15,7 +15,8 @@ import {
 } from "react-icons/gi";
 
 import "../../styles/home.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AxiosConfig from "../../axios/AxiosConfig";
 
 export default function Home() {
   const responsive = {
@@ -37,7 +38,24 @@ export default function Home() {
       items: 1,
     },
   };
-  const [hotProducts, setHotProducts] = useState(Array.from({ length: 5 }));
+  const [hotProducts, setHotProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchHotProducts = async () => {
+      try {
+        setLoading(true);
+        const res = await AxiosConfig.get("/api/products?page=1&hot=true");
+        console.log(res);
+        setHotProducts(res.data.products);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    };
+    fetchHotProducts();
+  }, []);
   return (
     <>
       <SlideBaner />
@@ -84,13 +102,19 @@ export default function Home() {
         <h1>Sản phẩm nổi bật</h1>
         <div className="box_container">
           <Carousel responsive={responsive} infinite={true} autoPlay>
-            {hotProducts.map((item, index) => (
-              <ProductCard
-                key={index}
-                name={"Dây chuyền trái tim"}
-                price={250000}
-              />
-            ))}
+            {loading ? (
+              <div className="loading loading-spinner loading-lg"></div>
+            ) : (
+              hotProducts.map((product) => (
+                <ProductCard
+                  key={product._id}
+                  name={product.name}
+                  img={product.photo}
+                  price={product.price}
+                  id={product._id}
+                />
+              ))
+            )}
           </Carousel>
         </div>
       </div>

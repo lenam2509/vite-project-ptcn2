@@ -18,6 +18,7 @@ export default function Products() {
     photo: "",
     hot: "",
   });
+  const [page, setPage] = useState(1);
 
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.name]: e.target.value });
@@ -193,6 +194,14 @@ export default function Products() {
     }
   };
 
+  const handleNextPage = () => {
+    setPage(page + 1);
+  };
+
+  const handlePrevPage = () => {
+    setPage(page - 1);
+  };
+
   useEffect(() => {
     const getCategories = async () => {
       try {
@@ -206,9 +215,9 @@ export default function Products() {
     const getProducts = async () => {
       try {
         setloading(true);
-        const res = await AxiosConfig.get("/api/products");
+        const res = await AxiosConfig.get(`/api/products?page=${page}`);
         if (res.status === 200 || 201) {
-          setArrays(res.data.products);
+          setArrays(res.data);
           setloading(false);
           console.log(res);
         }
@@ -218,7 +227,7 @@ export default function Products() {
     };
     getProducts();
     getCategories();
-  }, [reloadPage]);
+  }, [reloadPage, page]);
 
   return (
     <div>
@@ -454,8 +463,8 @@ export default function Products() {
                   <div className="loading loading-spinner loading-lg"></div>
                 </td>
               </tr>
-            ) : arrays.length > 0 ? (
-              arrays.map((item, index) => (
+            ) : arrays.products?.length > 0 ? (
+              arrays.products.map((item, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
@@ -501,11 +510,19 @@ export default function Products() {
 
         {/* pagination and total */}
         <div className="flex items-center mt-4">
-          <div className="flex-[2]">Có tổng cộng {arrays.length} sản phẩm</div>
+          <div className="flex-[2]">
+            Có tổng cộng {arrays.totalProducts} sản phẩm
+            <br />
+            Có tổng cộng {arrays.totalPages} trang
+          </div>
           <div className="join flex-[2]">
-            <button className="join-item btn">«</button>
-            <button className="join-item btn">Page 1</button>
-            <button className="join-item btn">»</button>
+            <button className="join-item btn" onClick={handlePrevPage}>
+              «
+            </button>
+            <button className="join-item btn">Page {page}</button>
+            <button className="join-item btn" onClick={handleNextPage}>
+              »
+            </button>
           </div>
         </div>
       </div>

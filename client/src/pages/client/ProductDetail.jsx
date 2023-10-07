@@ -1,39 +1,78 @@
 import "../../styles/productdetail.css";
 import Product from "../../assets/images/product.jpg";
 import { BsCartPlusFill } from "react-icons/bs";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import AxiosConfig from "../../axios/AxiosConfig";
+import Carousel from "react-multi-carousel";
+
 export default function ProductDetail() {
+  const id = useParams().id;
+  const [product, setProduct] = useState({});
+  const [loading, setLoading] = useState(false);
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        setLoading(true);
+        const res = await AxiosConfig.get(`/api/products/${id}`);
+        console.log(res);
+        setProduct(res.data.product);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    };
+    fetchProduct();
+  }, []);
+
   return (
     <Fragment>
       <div className="detail_container">
         <div className="detail_imgs">
           <div className="detail_img">
-            <img src={Product} alt="" />
+            <img src={product.photo} alt="" />
           </div>
           <div className="detail_small_img">
-            <img src={Product} alt="" />
-            <img src={Product} alt="" />
-            <img src={Product} alt="" />
+            <img src={product.photo} alt="" />
+            <img src={product.photo} alt="" />
+            <img src={product.photo} alt="" />
           </div>
         </div>
 
         <div className="detail_content">
-          <h1>Trà vải</h1>
-          <span className="price">20.000đ</span>
-          <p>
-            Và trà vải cũng thế nó là một loại trà trái cây tự nhiên có trà, quả
-            vải thiều ngâm, mật ong, nước lạnh. Một số nơi còn biến tấu món trà
-            này thành trà cùng nước ép trái cây, chiết xuất của quả vải,… để dễ
-            uống hơn vưới những người không thích vị đậm của trà.
-          </p>
+          <h1>{product.name}</h1>
+          <span className="price">
+            {product.price?.toLocaleString("vi-VN")}đ
+          </span>
+          <p>{product.description}</p>
           <div className="detail_quantity">
             <button className="btn_desc">-</button>
             <span>1</span>
             <button className="btn_inc">+</button>
           </div>
           <div className="detail_btn">
-            <button>
+            <button className="flex gap-1">
               Thêm <BsCartPlusFill />
             </button>
           </div>
@@ -45,11 +84,15 @@ export default function ProductDetail() {
           <h1>Sản phẩm liên quan</h1>
           <div className="breakrum"></div>
         </div>
-        <div className="same_products_container">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+        <div className="w-[1500px] mx-auto">
+          <Carousel responsive={responsive} infinite autoPlay>
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+            <ProductCard />
+          </Carousel>
         </div>
       </div>
     </Fragment>

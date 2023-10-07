@@ -10,4 +10,5 @@ router.get('/:id', ProductController.getOneProduct);
 router.put('/:id', uploadCloud.single('photo'), ProductController.updateProduct);
 router.delete('/:id', ProductController.deleteProduct);
 
+
 module.exports = router;
