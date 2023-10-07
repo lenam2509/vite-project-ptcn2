@@ -11,6 +11,7 @@ export default function ProductDetail() {
   const id = useParams().id;
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(false);
+  const [relatedProducts, setRelatedProducts] = useState([]);
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -37,6 +38,7 @@ export default function ProductDetail() {
         const res = await AxiosConfig.get(`/api/products/${id}`);
         console.log(res);
         setProduct(res.data.product);
+        setRelatedProducts(res.data.relatedProducts);
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -44,7 +46,7 @@ export default function ProductDetail() {
       }
     };
     fetchProduct();
-  }, []);
+  }, [id]);
 
   return (
     <Fragment>
@@ -72,7 +74,7 @@ export default function ProductDetail() {
             <button className="btn_inc">+</button>
           </div>
           <div className="detail_btn">
-            <button className="flex gap-1">
+            <button className="flex gap-1 ">
               Thêm <BsCartPlusFill />
             </button>
           </div>
@@ -85,13 +87,20 @@ export default function ProductDetail() {
           <div className="breakrum"></div>
         </div>
         <div className="w-[1500px] mx-auto">
-          <Carousel responsive={responsive} infinite autoPlay>
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+          <Carousel
+            className="flex items-center justify-center"
+            responsive={responsive}
+            autoPlay
+          >
+            {relatedProducts.map((product) => (
+              <ProductCard
+                key={product._id}
+                name={product.name}
+                price={product.price}
+                img={product.photo}
+                id={product._id}
+              />
+            ))}
           </Carousel>
         </div>
       </div>

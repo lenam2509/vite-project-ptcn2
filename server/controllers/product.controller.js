@@ -83,7 +83,9 @@ const ProductController = {
         const { id } = req.params;
         try {
             const product = await ProductModel.findById(id).populate('category');
-            res.status(200).json({ product });
+            // related products but not include the current product
+            const relatedProducts = await ProductModel.find({ category: product.category, _id: { $ne: id } }).limit(5).populate('category');
+            res.status(200).json({ product, relatedProducts });
         } catch (error) {
             res.status(500).json({
                 message: 'Server error'
