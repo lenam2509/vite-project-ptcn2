@@ -26,7 +26,7 @@
 
 .cart_container table tbody tr td img {
   width: 150px;
-  height: 100px;
+  height: 150px;
 }
 
 .cart_container table tbody tr td.name {
@@ -55,12 +55,18 @@
 }
 
 .cart_container table tbody tr td.quantity input {
-  width: 30px;
+  width: 50px;
   height: 30px;
   border: none;
   outline: none;
   text-align: center;
   font-size: 20px;
+}
+
+.cart_container table tbody tr td.quantity input::-webkit-outer-spin-button,
+.cart_container table tbody tr td.quantity input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .cart_container table tbody tr td.delete {
@@ -71,6 +77,7 @@
 
 .cart_container table tbody tr td.delete svg {
   cursor: pointer;
+  margin: 0 auto;
 }
 
 .cart_options {

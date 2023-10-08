@@ -75,7 +75,7 @@ export default function Checkout() {
           </div>
           <div className="payment_btns">
             <button className="btn">Thanh toán khi nhận hàng</button>
-            <button className="btn">Thanh toàn bằng ngân hàng</button>
+            <button className="btn">Thanh toán bằng ngân hàng</button>
           </div>
         </div>
       </div>

@@ -14,6 +14,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/Slices/authSlice";
+import { removeItem } from "../redux/Slices/cartSlice";
 
 export default function Navbar() {
   const NavRef = useRef();
@@ -21,6 +22,9 @@ export default function Navbar() {
   const history = useHistory();
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.auth);
+  const { items, totalPrice, totalQuantity } = useSelector(
+    (state) => state.cart
+  );
 
   const toggleNav = () => {
     NavRef.current.classList.toggle("responsive_nav");
@@ -57,6 +61,13 @@ export default function Navbar() {
     },
   ];
 
+  const RemoveCart = (id) => {
+    dispatch(removeItem(id));
+    toast.success("Xóa sản phẩm thành công", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  };
+
   return (
     <header>
       <FaBars className="header_toggle" onClick={toggleNav} />
@@ -82,9 +93,56 @@ export default function Navbar() {
         </Link>
 
         <div className="cart" onClick={toggleCart}>
-          <BiSolidCart /> <span style={{ color: "black" }}>0</span>
+          <BiSolidCart />{" "}
+          <span style={{ color: "black" }}>{totalQuantity}</span>
         </div>
-        <div className="cart_detail" ref={CartRef}>
+
+        {items.length > 0 && (
+          <div className="cart_detail" ref={CartRef}>
+            <h2>Giỏ hàng</h2>
+            {items.map((item, index) => (
+              <div className="cart_item" key={index}>
+                <img src={item.img ? item.img : Product} alt="" />
+                <div className="cart_item_detail">
+                  <h3>{item.name ? item.name : "Product Name"}</h3>
+                  <p className="price">
+                    {item.price
+                      ? item.price.toLocaleString("vi-VN") + "đ"
+                      : "Product Price"}
+                  </p>
+                  <p className="quantity">x{item.quantity}</p>
+                </div>
+                <BiSolidTrashAlt
+                  onClick={() => RemoveCart(item.id)}
+                  size={30}
+                />
+              </div>
+            ))}
+
+            <div className="cart_total_money">
+              <p>Tổng tiền:</p>{" "}
+              <span>{totalPrice.toLocaleString("vi-VN")}đ</span>
+            </div>
+            <div className="cart_btn">
+              <Link to="/cart" className="cart_btn_buy">
+                Xem giỏ hàng
+              </Link>
+            </div>
+          </div>
+        )}
+
+        {items.length === 0 && (
+          <div className="cart_detail" ref={CartRef}>
+            <div>
+              <p className="text-2xl font-bold">Giỏ hàng trống</p>
+            </div>
+            <div className="cart_total_money">
+              <p>Tổng tiền:</p> <span>0đ</span>
+            </div>
+          </div>
+        )}
+
+        {/* <div className="cart_detail" ref={CartRef}>
           <h2>Giỏ hàng</h2>
           <div className="cart_item">
             <img src={Product} alt="" />
@@ -96,6 +154,7 @@ export default function Navbar() {
             <BiSolidTrashAlt />
           </div>
 
+
           <div className="cart_total_money">
             <p>Tổng tiền:</p> <span>100.000đ</span>
           </div>
@@ -104,7 +163,7 @@ export default function Navbar() {
               Xem giỏ hàng
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
     </header>
   );
