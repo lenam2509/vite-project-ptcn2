@@ -9,6 +9,7 @@ const connectDB = require('./db/db');
 const categoryRouter = require('./routes/category.route');
 const productRouter = require('./routes/product.route');
 const userRouter = require('./routes/user.route');
+const billRouter = require('./routes/bill.route');
 connectDB();
 // const categoryRouter = require('./routes/category.router');
 
@@ -40,6 +41,8 @@ app.use((error, req, res, next) => {
 app.use('/api/users', userRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/products', productRouter);
+app.use('/api/bills', billRouter);
+
 
 
 const PORT = process.env.PORT || 2509;

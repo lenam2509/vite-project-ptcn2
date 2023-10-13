@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import AxiosConfig from '../../axios/AxiosConfig'
 
 const initialState = {
     data: null,
@@ -20,10 +21,13 @@ export const authSlice = createSlice({
             state.isAuthenticated = false
             state.token = null
         },
+        update: (state, action) => {
+            state.data = action.payload
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { login, logout } = authSlice.actions
+export const { login, logout, update } = authSlice.actions
 
 export default authSlice.reducer

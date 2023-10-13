@@ -11,7 +11,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true,
         required: [true, 'User email is required'],
-        unique: true
     },
     password: {
         type: String,
@@ -21,10 +20,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['user', 'admin'],
         default: 'user'
-    },
-    history: {
-        type: Array,
-        default: []
     },
     photo: {
         type: String,

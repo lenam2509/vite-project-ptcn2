@@ -11,6 +11,7 @@ import ScrollTop from "../../components/ScrollTop";
 import About from "./About";
 import Contact from "./Contact";
 import UserInfo from "./UserInfo";
+import Paysuccess from "./Paysuccess";
 
 export default function ClientRoute() {
   return (
@@ -28,6 +29,8 @@ export default function ClientRoute() {
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
           <Route path="/userinfo" component={UserInfo} />
+          <Route path="/paysuccess" component={Paysuccess} />
+          <Route path="*" component={() => <div>404 Not Found</div>} />
         </Switch>
       </section>
       <Footer />

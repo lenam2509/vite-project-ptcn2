@@ -2,9 +2,11 @@ const userModels = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const billmodel = require('../models/bill.model');
+
 
 const userController = {
-    
+
     async login(req, res) {
         const { email, password } = req.body;
         try {
@@ -20,7 +22,7 @@ const userController = {
                     message: 'Mật khẩu không đúng'
                 });
             }
-            const payload = { id: user._id, name: user.name, email: user.email, role: user.role };
+            const payload = { id: user._id, name: user.name, email: user.email, role: user.role, phone: user.phone, address: user.address };
             const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1d' });
             // add token to cookie
             res.cookie('token', token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
@@ -33,7 +35,7 @@ const userController = {
         }
     },
 
-    
+
 
 
 
@@ -58,7 +60,22 @@ const userController = {
                 message: 'Server error'
             });
         }
-    }
+    },
+
+    async getOneUser(req, res) {
+        try {
+            const bills = await billmodel.find({ user: req.params.id }).populate('user', 'name email').populate('products.product', 'name price photo').sort({ createdAt: -1 });
+            const user = await userModels.findById(req.params.id)
+            res.status(200).json({ user, bills });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+                message: 'Server error'
+            });
+        }
+    },
+
+
 }
 
 module.exports = userController;

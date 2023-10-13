@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authSlice from './Slices/authSlice'
 import cartSlice from './Slices/cartSlice'
+import billSlice from './Slices/billSlice'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
@@ -25,6 +26,7 @@ export const store = configureStore({
     reducer: {
         auth: persistedReducer1,
         cart: persistedReducer2,
+        bill: billSlice,
     },
 })
 

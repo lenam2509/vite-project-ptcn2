@@ -10,15 +10,22 @@ import {
   removeItem,
   clearCart,
 } from "../../redux/Slices/cartSlice";
+import { toast } from "react-toastify";
 
 export default function Cart() {
   const history = useHistory();
   const dispatch = useDispatch();
 
   const { items, totalPrice } = useSelector((state) => state.cart);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   const handleCheckout = () => {
-    history.push("/checkout");
+    if (isAuthenticated === false) {
+      toast.error("Vui lòng đăng nhập để tiếp tục thanh toán");
+      history.push("/login");
+    } else {
+      history.push("/checkout");
+    }
   };
 
   const btnPlus = (id) => {
