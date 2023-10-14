@@ -97,8 +97,8 @@ export default function Login() {
           position: toast.POSITION.TOP_CENTER,
         });
       }
-      axios
-        .post("http://localhost:2509/api/users/register", {
+      AxiosConfig
+        .post("/api/users/register", {
           email: registerForm.email,
           password: registerForm.password,
           name: registerForm.name,

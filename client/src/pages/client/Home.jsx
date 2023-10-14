@@ -6,7 +6,6 @@ import baner4 from "../../assets/images/baner4.jpg";
 
 import Carousel from "react-multi-carousel";
 
-
 import {
   GiEmeraldNecklace,
   GiDiamondRing,
@@ -40,6 +39,8 @@ export default function Home() {
   };
   const [hotProducts, setHotProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  console.log(process.env.API_URL);
 
   useEffect(() => {
     const fetchHotProducts = async () => {
