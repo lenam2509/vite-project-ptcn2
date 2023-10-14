@@ -31,7 +31,7 @@ export default function Donutchart() {
     ],
   };
   return (
-    <div className="w-full h-[400]">
+    <div className="flex-auto h-[500px]">
       <Doughnut data={data} />
     </div>
   );

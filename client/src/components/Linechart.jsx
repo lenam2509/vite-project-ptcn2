@@ -38,35 +38,25 @@ export default function Linechart() {
     ],
     datasets: [
       {
-        label: "Sales for 2020 (M)",
+        label: "Sản phẩm đã bán năm 2023 (M)",
         data: [3, 2, 2, 1, 5, 6],
-        borderColor: ["rgba(255, 206, 86, 0.2)"],
-        backgroundColor: ["rgba(255, 206, 86, 0.2)"],
-        pointBackgroundColor: "rgba(255, 206, 86, 0.2)",
-        pointBorderColor: "rgba(255, 206, 86, 0.2)",
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        pointBackgroundColor: "rgba(255, 99, 132, 0.5)",
+        pointBorderColor: "#fff",
       },
     ],
   };
-  //   const options = {
-  //     scales: {
-  //       yAxes: [
-  //         {
-  //           ticks: {
-  //             beginAtZero: true,
-  //           },
-  //         },
-  //       ],
-  //       xAxes: {
-  //         type: "time",
-  //         time: {
-  //           unit: "month",
-  //         },
-  //       },
-  //     },
-  //   };
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
   return (
-    <div className="w-full h-[500px]">
-      <Line data={data} />
+    <div className="flex-auto h-[500px]">
+      <Line data={data} options={options} className="w-full h-full" />
     </div>
   );
 }

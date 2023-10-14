@@ -31,6 +31,11 @@ export default function Bills() {
       const res = await AxiosConfig.get(`/api/bills/${id}`);
       console.log(res.data);
       setBill(res.data.bill);
+      setPayload({
+        ...payload,
+        status: res.data.bill.status,
+        note: res.data.bill.note,
+      });
     };
     getBill();
     document.getElementById("my_modal_2").showModal();
@@ -202,6 +207,7 @@ export default function Bills() {
             name="status"
             className="select select-primary w-full max-w-xs my-4"
             onChange={handleChange}
+            value={payload.status}
           >
             {bill.status === "Pending" && (
               <option value="Pending" hidden selected>
@@ -244,6 +250,7 @@ export default function Bills() {
               placeholder="Type here"
               className="textarea textarea-primary w-full max-w-xs"
               onChange={handleChange}
+              value={payload.note}
             />
           </div>
           <hr className="w-full mt-2" />
