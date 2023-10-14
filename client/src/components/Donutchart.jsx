@@ -1,15 +1,24 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import AxiosConfig from "../axios/AxiosConfig";
+import { useEffect, useState } from "react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Donutchart() {
+  const [bills, setBills] = useState([]);
   const data = {
-    labels: ["Red", "Blue", "Yellow"],
+    labels: ["đang duyệt", "đang xử lý", "đã giao", "đã nhận", "đã hủy"],
     datasets: [
       {
-        label: "# of Votes",
-        data: [12, 19, 3],
+        label: "Hóa đơn",
+        data: [
+          bills.pending,
+          bills.processing,
+          bills.delivered,
+          bills.completed,
+          bills.cancelled,
+        ],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -30,6 +39,14 @@ export default function Donutchart() {
       },
     ],
   };
+  useEffect(() => {
+    const getBills = async () => {
+      const response = await AxiosConfig.get("/api/statistical/bills");
+      setBills(response.data);
+      console.log(bills);
+    };
+    getBills();
+  }, []);
   return (
     <div className="flex-auto h-[500px]">
       <Doughnut data={data} />

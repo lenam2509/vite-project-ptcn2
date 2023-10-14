@@ -40,7 +40,7 @@ export default function Home() {
   const [hotProducts, setHotProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  console.log(process.env.API_URL);
+  console.log(process.env.REACT_APP_API_URL);
 
   useEffect(() => {
     const fetchHotProducts = async () => {
