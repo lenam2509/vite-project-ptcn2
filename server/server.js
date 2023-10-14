@@ -47,7 +47,7 @@ app.use('/api/statistical', statisticalRouter);
 
 
 
-const PORT = `http://localhost:${process.env.PORT}` || 'http://localhost:2509';
+const PORT = process.env.PORT || 2509;
 
 app.listen(PORT, () => {
     console.log(`Server running at ${PORT}  `.yellow.bold);
