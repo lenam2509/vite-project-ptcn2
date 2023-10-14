@@ -107,6 +107,61 @@ export default function Checkout() {
     }
   };
 
+  const handleSubmitBank = async () => {
+    console.log(payload);
+    const { name, address, phone, email, note, cityDistricts } = payload;
+    const body = {
+      user: data._id || data.id,
+      products: items.map((item) => {
+        return {
+          product: item.id,
+          quantity: item.quantity,
+        };
+      }),
+      paymentMethod: "Bank",
+      name,
+      address,
+      phone,
+      email,
+      note,
+      cityDistricts,
+      total: totalPrice + 30000,
+    };
+    if (
+      body.name === "" ||
+      body.address === "" ||
+      body.phone === "" ||
+      body.email === "" ||
+      body.cityDistricts === ""
+    ) {
+      toast.error("Vui lòng nhập đầy đủ thông tin");
+      return;
+    }
+    try {
+      const res = await AxiosConfig.post("/api/bills", body);
+      console.log(res);
+      if (res.status === 200 || res.status === 201) {
+        toast.success("Đặt hàng thành công", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        history.push("/userinfo");
+        dispatch(clearCart());
+        dispatch(
+          update({
+            ...data,
+            address: body.address,
+            phone: body.phone,
+          })
+        );
+      } else {
+        toast.error("Đặt hàng thất bại");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Đặt hàng thất bại");
+    }
+  };
+
   return (
     <div className="checkout_container">
       <div className="customer_info">
@@ -221,7 +276,9 @@ export default function Checkout() {
             <button className="btn" onClick={handleSubmitCOD}>
               Thanh toán khi nhận hàng
             </button>
-            <button className="btn">Thanh toán bằng chuyển khoản</button>
+            <button className="btn" onClick={handleSubmitBank}>
+              Thanh toán bằng chuyển khoản
+            </button>
           </div>
         </div>
       </div>
