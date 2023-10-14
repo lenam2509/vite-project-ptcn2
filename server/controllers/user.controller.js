@@ -63,6 +63,7 @@ const userController = {
     },
 
     async getOneUser(req, res) {
+        const { limit, page } = req.query;
         try {
             const bills = await billmodel.find({ user: req.params.id }).populate('user', 'name email').populate('products.product', 'name price photo').sort({ createdAt: -1 });
             const user = await userModels.findById(req.params.id)

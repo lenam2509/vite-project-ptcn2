@@ -95,6 +95,7 @@ export default function UserInfo() {
                 <th>Tổng tiền</th>
                 <th>Phương thức thanh toán</th>
                 <th>Trạng thái</th>
+                <th>Ghi chú</th>
               </tr>
             </thead>
             <tbody className="bg-white text-center">
@@ -125,6 +126,7 @@ export default function UserInfo() {
                       {bill.status === "Cancelled" && "đã hủy"}
                       {bill.status === "Completed" && "đã nhận hàng"}
                     </td>
+                    <td>{bill.note}</td>
                   </tr>
                 );
               })}

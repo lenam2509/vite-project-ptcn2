@@ -41,23 +41,28 @@ const billController = {
 
     async getBills(req, res) {
         const { page, limit } = req.query;
-        const defaultLimit = 5 || limit;
-        const defaultPage = 1 || page;
+        const defaultLimit = 5;
+        const defaultPage = 1;
+
+        const parsedLimit = parseInt(limit) || defaultLimit;
+        const parsedPage = parseInt(page) || defaultPage;
         try {
             const bills = await billmodel
                 .find()
                 .populate('user', 'name email phone address')
                 .populate('products.product', 'name price photo')
-                .limit(defaultLimit)
-                .skip((defaultPage - 1) * defaultLimit)
+                .limit(parsedLimit)
+                .skip((parsedPage - 1) * parsedLimit)
                 .sort({ createdAt: -1 });
-            const totalBills = await billmodel.countDocuments();
+            const count = await billmodel.countDocuments();
+            const totalPages = Math.ceil(count / parsedLimit);
+
             res.status(200).json({
-                totalBills,
-                limit: defaultLimit,
-                totalPages: Math.ceil(totalBills / (limit || defaultLimit)),
-                currentPage: page || defaultPage,
-                bills,
+                totalBills: count,
+                totalPages,
+                currentPage: parsedPage,
+                limit: parsedLimit,
+                bills
             });
         } catch (error) {
             console.log(error);
@@ -65,8 +70,53 @@ const billController = {
                 message: 'Server error'
             });
         }
-    }
+    },
 
+    async getOneBill(req, res) {
+        const { id } = req.params;
+        try {
+            const bill = await billmodel
+                .findById(id)
+                .populate('user', 'name email phone address')
+                .populate('products.product', 'name price photo');
+            if (!bill) {
+                return res.status(404).json({
+                    message: 'Bill not found'
+                });
+            }
+            res.status(200).json({ bill });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+                message: 'Server error'
+            });
+        }
+    },
+
+    async updateBillStatus(req, res) {
+        const { id } = req.params;
+        const { status, note } = req.body;
+        try {
+            const bill = await billmodel.findById(id);
+            if (!bill) {
+                return res.status(404).json({
+                    message: 'Bill not found'
+                });
+            }
+            await billmodel.findByIdAndUpdate(id, {
+                status,
+                note,
+            });
+            res.status(200).json({
+                message: 'Update bill status successfully'
+            });
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+                message: 'Server error'
+            });
+        }
+    },
 
 }
 
