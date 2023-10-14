@@ -74,7 +74,7 @@ export default function ProductDetail() {
             <button className="btn_inc">+</button>
           </div>
           <div className="detail_btn">
-            <button className="flex gap-1 ">
+            <button className="flex gap-1 items-center ">
               Thêm <BsCartPlusFill />
             </button>
           </div>
