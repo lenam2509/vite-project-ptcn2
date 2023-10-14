@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 
 const AxiosConfig = axios.create({
-    baseURL: `${process.env.API_URL}`,
+    baseURL: `https://ptcn2-api-server.onrender.com`,
     headers: {
         'Content-Type': 'application/json',
     },
