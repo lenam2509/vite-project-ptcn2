@@ -150,7 +150,7 @@ export default function Bills() {
                     placeholder="Type here"
                     readOnly
                     className="input input-bordered w-full max-w-xs input-secondary"
-                    value={product.product.name}
+                    value={product.product?.name}
                   />
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -174,7 +174,7 @@ export default function Bills() {
                     placeholder="Type here"
                     readOnly
                     className="input input-bordered w-full max-w-xs input-secondary"
-                    value={product.product.price.toLocaleString("vi-VN") + "đ"}
+                    value={product.product?.price.toLocaleString("vi-VN") + "đ"}
                   />
                 </div>
                 <div className="form-control w-full max-w-xs">
@@ -182,7 +182,7 @@ export default function Bills() {
                     <span className="label-text text-base">Hình ảnh</span>
                   </label>
                   <img
-                    src={product.product.photo}
+                    src={product.product?.photo}
                     alt=""
                     className="w-[150px] h-[150px] object-cover"
                   />
@@ -299,7 +299,7 @@ export default function Bills() {
                     <td className="">
                       {bill.products.map((product, index) => (
                         <p key={index}>
-                          {product.product.name} x{product.quantity}
+                          {product.product?.name} x{product?.quantity}
                         </p>
                       ))}
                     </td>
