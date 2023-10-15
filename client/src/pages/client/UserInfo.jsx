@@ -108,7 +108,7 @@ export default function UserInfo() {
                       {bill.products.map((product) => {
                         return (
                           <p key={product._id}>
-                            {product.product.name} x {product.quantity}
+                            {product.product?.name} x {product?.quantity}
                           </p>
                         );
                       })}
