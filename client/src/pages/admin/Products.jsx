@@ -112,6 +112,7 @@ export default function Products() {
       description: "",
       category: "",
       hot: "",
+      photo: "",
     });
     fileInputRef.current.value = "";
   };
