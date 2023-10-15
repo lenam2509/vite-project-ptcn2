@@ -6,10 +6,15 @@ import ProductCard from "../../components/ProductCard";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import AxiosConfig from "../../axios/AxiosConfig";
 import Carousel from "react-multi-carousel";
+import { useDispatch } from "react-redux";
+import { addItemWithQuantity } from "../../redux/Slices/cartSlice";
+import { toast } from "react-toastify";
 
 export default function ProductDetail() {
   const id = useParams().id;
+  const dispatch = useDispatch();
   const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const responsive = {
@@ -31,6 +36,22 @@ export default function ProductDetail() {
       items: 1,
     },
   };
+
+  const addToCart = () => {
+    dispatch(addItemWithQuantity({ ...product, quantity }));
+    toast.success("Thêm vào giỏ hàng thành công");
+  };
+
+  const plusQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const minusQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -69,17 +90,22 @@ export default function ProductDetail() {
           </span>
           <p>{product.description}</p>
           <div className="detail_quantity">
-            <button className="btn_desc">-</button>
-            <span>1</span>
-            <button className="btn_inc">+</button>
+            <button className="btn_desc" onClick={minusQuantity}>
+              -
+            </button>
+            <span>{quantity}</span>
+            <button className="btn_inc" onClick={plusQuantity}>
+              +
+            </button>
           </div>
           <div className="detail_btn">
-            <button className="flex gap-1 items-center ">
+            <button className="flex gap-1 items-center" onClick={addToCart}>
               Thêm <BsCartPlusFill />
             </button>
           </div>
         </div>
       </div>
+
       <div className="same_products">
         <div className="title">
           <div className="breakrum"></div>

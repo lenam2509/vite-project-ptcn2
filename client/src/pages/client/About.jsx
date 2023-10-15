@@ -26,10 +26,12 @@ export default function About() {
       <div className="breakrum"></div>
       <div className="about_box">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
-          reprehenderit architecto itaque accusamus modi doloremque ullam
-          aspernatur. Incidunt vero suscipit sint soluta explicabo nisi non,
-          quasi quidem molestiae voluptatem quaerat quibusdam, voluptatum quas
+          Mỗi trang sức như dải ngân hà là sự kết tinh từ tinh hoa của những nhà
+          thiết kế và nhà chế tác bậc thầy, nắm bắt tinh thần hiện đại, kết hợp
+          với sự sang trọng cổ điển để mang đến cho phái đẹp niềm kiêu hãnh và
+          vẻ đẹp cuốn hút. Từng kiệt tác trang sức của J&6 đều mang trong mình
+          nét thanh cao, sang trọng nhưng vẫn giản dị như nội tâm người phụ nữ
+          nhiều trải nghiệm.
         </p>
       </div>
       <div className="about_box2">
@@ -39,9 +41,9 @@ export default function About() {
           </div>
           <h2>Uy tín</h2>
           <p>
-            Uy tín là điều J&6 đã gây dựng và khẳng định được trong gần
-            10 năm qua. Chúng tôi sẽ tiếp tục giữ vững giá trị kinh doanh cốt
-            lõi này trong suốt chặng đường phía trước để phát triển bền vững.
+            Uy tín là điều J&6 đã gây dựng và khẳng định được trong gần 10 năm
+            qua. Chúng tôi sẽ tiếp tục giữ vững giá trị kinh doanh cốt lõi này
+            trong suốt chặng đường phía trước để phát triển bền vững.
           </p>
         </div>
         <div className="box">
@@ -50,9 +52,9 @@ export default function About() {
           </div>
           <h2>Đồng Hành</h2>
           <p>
-            Đồng hành là cam kết và cũng là giá trị nổi bật của J&6.
-            Chúng tôi đồng hành cùng nhà cung cấp, đồng hành cùng khách hàng và
-            đồng hành cùng khách hàng của khách hàng.
+            Đồng hành là cam kết và cũng là giá trị nổi bật của J&6. Chúng tôi
+            đồng hành cùng nhà cung cấp, đồng hành cùng khách hàng và đồng hành
+            cùng khách hàng của khách hàng.
           </p>
         </div>
         <div className="box">
@@ -62,8 +64,7 @@ export default function About() {
           <h2>Trách Nhiệm</h2>
           <p>
             Trách nhiệm là nền tảng tạo nên chất lượng của sản phẩm & dịch vụ
-            của J&6, từ đó mới khiến khách hàng hài lòng và gắn bó lâu
-            dài.
+            của J&6, từ đó mới khiến khách hàng hài lòng và gắn bó lâu dài.
           </p>
         </div>
       </div>

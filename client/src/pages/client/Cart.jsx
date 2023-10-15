@@ -54,7 +54,7 @@ export default function Cart() {
             items.map((item) => (
               <tr key={item.id}>
                 <td className="flex justify-center">
-                  <img src={item.img} alt="" />
+                  <img src={item.img || item.photo} alt="" />
                 </td>
                 <td className="name">{item.name}</td>
                 <td className="sub_price">
