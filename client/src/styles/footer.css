@@ -33,13 +33,14 @@ footer {
 
 .footer_item h3 {
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .footer_item p {
   margin-top: 1rem;
   font-size: 1rem;
-  font-weight: 700;
+  cursor: pointer;
 }
 
 .fotter_media {
@@ -54,8 +55,12 @@ footer {
 }
 
 .fotter_coppyright {
-  margin-top: 5rem;
+  margin-top: 2rem;
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
   text-align: center;
+}
+
+.fotter_coppyright img {
+  margin: 0 auto;
 }

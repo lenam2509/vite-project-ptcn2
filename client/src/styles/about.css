@@ -85,9 +85,8 @@
   min-height: 200px;
   display: flex;
   background: #f7f7f7;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 1rem;
-  gap: 1rem;
   margin-top: 5rem;
 }
 

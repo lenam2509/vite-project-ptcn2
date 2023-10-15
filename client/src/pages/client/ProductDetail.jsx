@@ -116,7 +116,7 @@ export default function ProductDetail() {
           <Carousel
             className="flex items-center justify-center"
             responsive={responsive}
-            autoPlay
+            infinite
           >
             {relatedProducts.map((product) => (
               <ProductCard

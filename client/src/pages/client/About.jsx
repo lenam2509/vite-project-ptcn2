@@ -69,15 +69,15 @@ export default function About() {
         </div>
       </div>
       <div className="about_box3">
-        <div className="box">
+        {/* <div className="box">
           <AiOutlineTrophy />
           <h1>100</h1>
           <p>Được Cấp Chứng Nhận Cơ Sở An Toàn Thực Phẩm</p>
-        </div>
+        </div> */}
         <div className="box">
           <BsShieldCheck />
           <h1>100</h1>
-          <p>Đảm Bảo Tiêu Chuẩn An Toàn Vệ Sinh Thực Phẩm</p>
+          <p>Đảm Bảo 100% Bạc Chất Lượng 925</p>
         </div>
         <div className="box">
           <BsBriefcase />
@@ -90,18 +90,12 @@ export default function About() {
           <p>Khách Hàng Hài Lòng</p>
         </div>
       </div>
-      <div className="about_box4">
+      {/* <div className="about_box4">
         <div className="title">
           <h1>Thành viên nhóm</h1>
           <div className="breakrum"></div>
         </div>
         <div className="about_teams">
-          {/* <div className="about_member_info">
-            <div className="info_img">
-              <img src={Member1} alt="" />
-            </div>
-            <h2>Lê Việt Nam</h2>
-          </div> */}
           {members.map((item, index) => {
             return (
               <div className="about_member_info" key={index}>
@@ -114,7 +108,7 @@ export default function About() {
             );
           })}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
