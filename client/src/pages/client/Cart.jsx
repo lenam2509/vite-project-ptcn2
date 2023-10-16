@@ -38,51 +38,53 @@ export default function Cart() {
 
   return (
     <div className="cart_container">
-      <table>
-        <thead>
-          <tr>
-            <th>Ảnh</th>
-            <th>Tên sản phẩm</th>
-            <th>Đơn giá</th>
-            <th>Số lượng</th>
-            <th>Tổng phụ</th>
-            <th>Hành động</th>
-          </tr>
-        </thead>
-        <tbody>
-          {items.length > 0 ? (
-            items.map((item) => (
-              <tr key={item.id}>
-                <td className="flex justify-center">
-                  <img src={item.img || item.photo} alt="" />
-                </td>
-                <td className="name">{item.name}</td>
-                <td className="sub_price">
-                  {item.price.toLocaleString("vi-VN")}đ
-                </td>
-                <td className="quantity">
-                  <button onClick={() => btnMinus(item.id)}>-</button>
-                  <input type="number" readOnly value={item.quantity} />
-                  <button onClick={() => btnPlus(item.id)}>+</button>
-                </td>
-                <td className="total_price">
-                  {(item.price * item.quantity).toLocaleString("vi-VN")}đ
-                </td>
-                <td
-                  className="delete"
-                  onClick={() => dispatch(removeItem(item.id))}
-                >
-                  <BsFillTrashFill />
-                </td>
-              </tr>
-            ))
-          ) : (
+      <div className="w-full overflow-x-auto">
+        <table>
+          <thead>
             <tr>
-              <td colSpan="6">Không có sản phẩm nào trong giỏ hàng</td>
+              <th>Ảnh</th>
+              <th>Tên sản phẩm</th>
+              <th>Đơn giá</th>
+              <th>Số lượng</th>
+              <th>Tổng phụ</th>
+              <th>Hành động</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {items.length > 0 ? (
+              items.map((item) => (
+                <tr key={item.id}>
+                  <td className="flex justify-center">
+                    <img src={item.img || item.photo} alt="" />
+                  </td>
+                  <td className="name">{item.name}</td>
+                  <td className="sub_price">
+                    {item.price.toLocaleString("vi-VN")}đ
+                  </td>
+                  <td className="quantity">
+                    <button onClick={() => btnMinus(item.id)}>-</button>
+                    <input type="number" readOnly value={item.quantity} />
+                    <button onClick={() => btnPlus(item.id)}>+</button>
+                  </td>
+                  <td className="total_price">
+                    {(item.price * item.quantity).toLocaleString("vi-VN")}đ
+                  </td>
+                  <td
+                    className="delete"
+                    onClick={() => dispatch(removeItem(item.id))}
+                  >
+                    <BsFillTrashFill />
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6">Không có sản phẩm nào trong giỏ hàng</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
       <div className="cart_options">
         <button className="continue_buy">Tiếp tục mua hàng</button>
         <button

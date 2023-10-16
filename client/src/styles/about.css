@@ -174,3 +174,42 @@
   font-size: 1.2rem;
   text-align: center;
 }
+
+/* reponsive */
+
+@media screen and (max-width: 1024px) {
+  .about_container .about_box {
+    width: 100%;
+  }
+  .about_box2 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about_box2 .box .box_img {
+    width: 100%;
+    height: 300px;
+  }
+  .about_box2 .box {
+    width: 100%;
+  }
+
+  .about_box2 .box h2 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .about_box3 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about_box3 .box {
+    margin-top: 20px;
+  }
+  .about_box4 .about_teams {
+    justify-content: center;
+  }
+  .about_teams .about_member_info {
+    width: 100%;
+  }
+}

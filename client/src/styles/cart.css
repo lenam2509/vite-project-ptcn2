@@ -152,3 +152,52 @@
   border-radius: 1rem;
   color: #fff;
 }
+
+/* reponsive */
+
+@media screen and (max-width: 1024px) {
+  .cart_container {
+    width: 100%;
+  }
+  .cart_container table tbody tr td.name {
+    font-size: 16px;
+  }
+
+  .cart_container table tbody tr td img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+  }
+
+  .cart_container table tbody tr td.sub_price {
+    font-size: 16px;
+  }
+  .cart_container table tbody tr td.total_price {
+    font-size: 16px;
+  }
+  .cart_container table tbody tr td.quantity button {
+    font-size: 16px;
+  }
+  .cart_container table tbody tr td.quantity input {
+    font-size: 16px;
+  }
+  .cart_container table tbody tr td.delete {
+    font-size: 16px;
+  }
+  .cart_container table tbody tr td.delete svg {
+    width: 20px;
+    height: 20px;
+  }
+  .cart_total {
+    width: 100%;
+  }
+  .cart_total .title h3 {
+    font-size: 20px;
+  }
+  .cart_total .total_price span {
+    font-size: 16px;
+  }
+  .cart_total button {
+    font-size: 16px;
+  }
+}

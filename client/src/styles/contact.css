@@ -109,3 +109,23 @@
   transition: all 0.3s ease;
   align-self: center;
 }
+
+/* reponsive */
+
+@media (max-width: 1200px) {
+  .contact_container {
+    width: 100%;
+  }
+
+  .contact_info_form_container {
+    flex-direction: column;
+  }
+
+  .contact_info_form_container .left {
+    width: 100%;
+  }
+
+  .contact_info_form_container .right {
+    width: 100%;
+  }
+}

@@ -85,7 +85,7 @@ export default function UserInfo() {
       {/* hóa đơn */}
       <h1 className="text-2xl font-bold mt-5 uppercase ">Thông tin hóa đơn</h1>
       {bills.length > 0 ? (
-        <div className="overflow-x-auto my-4 border-black border rounded-md">
+        <div className="overflow-x-auto my-4 border-black border rounded-md w-full">
           <table className="table">
             {/* head */}
             <thead className="bg-purple-500 font-bold text-sm text-center text-white">
