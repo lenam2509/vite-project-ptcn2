@@ -188,12 +188,12 @@ header nav a:hover {
 
   header nav {
     position: fixed;
-    top: 170px;
+    top: 160px;
     left: 0;
-    width: 50%;
+    width: 200px;
     height: 100vh;
     flex-direction: column;
-    background-color: #f3be76;
+    background-color: #fff;
     transition: all 0.5s ease;
     transform: translateX(-100%);
     z-index: 999;
@@ -203,13 +203,20 @@ header nav a:hover {
     transform: translateX(-10%);
   }
 
-  header .responsive_nav a {
-  }
+  /* header .responsive_nav a {
+
+  } */
 
   .header_logo {
     font-size: 2rem;
-    margin-left: 2.5rem;
+    margin-left: 4rem;
     margin-right: 0;
+  }
+
+  .header_logo img {
+    width: 150px;
+    height: 100px;
+    object-fit: fill;
   }
 
   .header_icons {
@@ -220,12 +227,12 @@ header nav a:hover {
     display: block;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #fff;
+    color: #000;
   }
 
   .header_icons .cart_detail {
     width: 100%;
-    top: 4rem;
+    top: 10rem;
     right: 0;
     border-radius: 0;
     padding: 0;
