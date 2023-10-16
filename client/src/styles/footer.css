@@ -64,3 +64,24 @@ footer {
 .fotter_coppyright img {
   margin: 0 auto;
 }
+
+/* reponsive */
+
+@media (max-width: 768px) {
+  .footer_container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer_item {
+    width: 100%;
+  }
+
+  .footer_item hr {
+    margin: 0 auto;
+  }
+
+  .fotter_media {
+    justify-content: center;
+  }
+}

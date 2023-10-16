@@ -2,6 +2,7 @@ import "../styles/footer.css";
 import { AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
 import logo from "../assets/images/logo.jpg";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Footer() {
   return (
@@ -10,14 +11,10 @@ export default function Footer() {
         <div className="footer_item">
           <h3>Giới thiệu</h3>
           <hr />
-          <p>Câu chuyện J&6</p>
-          <p>
-            Website bán trang sức J&6 được thành lập vào năm 2023 bởi 6 thành
-            viên
-          </p>
+          <Link to="/about">Thông tin về chúng tôi</Link>
           <p>Địa chỉ: 81 ấp 5, Lê Văn Lương, Nhà Bè</p>
           <p>Hotline: 035501907</p>
-          <p>Email: levietnam2509@gmail.com</p>
+          <p>Email: j&6team@gmail.com</p>
           <p className="fotter_media">
             <AiFillFacebook />
             <AiFillInstagram />
@@ -27,7 +24,7 @@ export default function Footer() {
         <div className="footer_item">
           <h3>Thông tin & Chính Sách</h3>
           <hr />
-          <p>Thông tin về chúng tôi</p>
+          <p>Chính sách bảo hành</p>
           <p>Chính sách bảo mật</p>
           <p>Chính sách vận chuyển</p>
         </div>

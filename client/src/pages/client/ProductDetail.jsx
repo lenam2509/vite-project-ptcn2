@@ -112,9 +112,9 @@ export default function ProductDetail() {
           <h1>Sản phẩm liên quan</h1>
           <div className="breakrum"></div>
         </div>
-        <div className="w-[1500px] mx-auto">
+        <div className="same_products_container">
           <Carousel
-            className="flex items-center justify-center"
+            className=""
             responsive={responsive}
             infinite
           >

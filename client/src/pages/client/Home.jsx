@@ -6,12 +6,7 @@ import baner4 from "../../assets/images/baner4.jpg";
 
 import Carousel from "react-multi-carousel";
 
-import {
-  GiEmeraldNecklace,
-  GiDiamondRing,
-  GiCrystalEarrings,
-  GiWatch,
-} from "react-icons/gi";
+import { GiEmeraldNecklace, GiDiamondRing, GiFireRing } from "react-icons/gi";
 
 import "../../styles/home.css";
 import { useEffect, useState } from "react";
@@ -62,6 +57,11 @@ export default function Home() {
       <SlideBaner />
       <div className="container2">
         <div className="row">
+          <GiFireRing />
+          <h2>Lắc đeo tay</h2>
+          <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
+        </div>
+        <div className="row">
           <GiEmeraldNecklace />
           <h2>Dây chuyền</h2>
           <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
@@ -69,16 +69,6 @@ export default function Home() {
         <div className="row">
           <GiDiamondRing />
           <h2>Nhẫn đeo tay</h2>
-          <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
-        </div>
-        <div className="row">
-          <GiCrystalEarrings />
-          <h2>Bông tai</h2>
-          <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
-        </div>
-        <div className="row">
-          <GiWatch />
-          <h2>Đồng hồ</h2>
           <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
         </div>
       </div>
