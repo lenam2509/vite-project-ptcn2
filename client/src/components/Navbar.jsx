@@ -18,7 +18,9 @@ import { removeItem } from "../redux/Slices/cartSlice";
 
 export default function Navbar() {
   const NavRef = useRef();
+  const NavRefParent = useRef();
   const CartRef = useRef();
+  const CartParentRef = useRef();
   const history = useHistory();
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -67,13 +69,35 @@ export default function Navbar() {
       position: toast.POSITION.TOP_CENTER,
     });
   };
+  const handleDocumentClick = (event) => {
+    if (
+      CartRef.current &&
+      !CartRef.current.contains(event.target) &&
+      CartParentRef.current &&
+      !CartParentRef.current.contains(event.target)
+    ) {
+      // Clicked outside the cart, do something
+      CartRef.current.classList.remove("active_cart");
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleDocumentClick);
+    return () => {
+      document.removeEventListener("click", handleDocumentClick);
+    };
+  }, []);
 
   return (
     <header>
-      <FaBars className="header_toggle" onClick={toggleNav} />
+      <FaBars
+        className="header_toggle"
+        ref={NavRefParent}
+        onClick={toggleNav}
+      />
       <nav ref={NavRef}>
         {Links.map((link, index) => (
-          <Link key={index} to={link.to}>
+          <Link key={index} to={link.to} onClick={toggleNav}>
             {link.label}
           </Link>
         ))}
@@ -92,9 +116,9 @@ export default function Navbar() {
           <BiSolidUser />
         </Link>
 
-        <div className="cart" onClick={toggleCart}>
-          <BiSolidCart />{" "}
-          <span style={{ color: "black" }}>{totalQuantity}</span>
+        <div className="cart" ref={CartParentRef} onClick={toggleCart}>
+          <BiSolidCart />
+          <span className="text-black text-xl">{totalQuantity}</span>
         </div>
 
         {items.length > 0 && (
@@ -141,29 +165,6 @@ export default function Navbar() {
             </div>
           </div>
         )}
-
-        {/* <div className="cart_detail" ref={CartRef}>
-          <h2>Giỏ hàng</h2>
-          <div className="cart_item">
-            <img src={Product} alt="" />
-            <div className="cart_item_detail">
-              <h3>Trà vải</h3>
-              <p className="price">100.000đ</p>
-              <p className="quantity">x5</p>
-            </div>
-            <BiSolidTrashAlt />
-          </div>
-
-
-          <div className="cart_total_money">
-            <p>Tổng tiền:</p> <span>100.000đ</span>
-          </div>
-          <div className="cart_btn">
-            <Link to="/cart" className="cart_btn_buy">
-              Xem giỏ hàng
-            </Link>
-          </div>
-        </div> */}
       </div>
     </header>
   );
