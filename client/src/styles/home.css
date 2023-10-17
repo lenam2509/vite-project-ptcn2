@@ -142,11 +142,11 @@
 
 /* for iphone 5 */
 
-@media (max-width: 375px) {
+@media (max-width: 400px) {
   .container4
     .box_container
     .react-multi-carousel-list
     .react-multi-carousel-track {
-    padding: 0 1.5rem;
+    padding: 0 1rem;
   }
 }
