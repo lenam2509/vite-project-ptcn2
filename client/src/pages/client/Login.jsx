@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/Slices/authSlice";
 import AxiosConfig from "../../axios/AxiosConfig";
+import GoogleLoginBtn from "../../components/GoogleLogin";
 export default function Login() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -97,12 +98,11 @@ export default function Login() {
           position: toast.POSITION.TOP_CENTER,
         });
       }
-      AxiosConfig
-        .post("/api/users/register", {
-          email: registerForm.email,
-          password: registerForm.password,
-          name: registerForm.name,
-        })
+      AxiosConfig.post("/api/users/register", {
+        email: registerForm.email,
+        password: registerForm.password,
+        name: registerForm.name,
+      })
         .then((res) => {
           setLoading(false);
           setDisable(false);
@@ -222,6 +222,7 @@ export default function Login() {
           </button>
         </form>
       )}
+      <GoogleLoginBtn />
     </div>
   );
 }

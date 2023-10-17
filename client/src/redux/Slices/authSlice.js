@@ -24,10 +24,14 @@ export const authSlice = createSlice({
         update: (state, action) => {
             state.data = action.payload
         },
+        loginWithGoogle: (state, action) => {
+            state.data = action.payload
+            state.isAuthenticated = true
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { login, logout, update } = authSlice.actions
+export const { login, logout, update, loginWithGoogle } = authSlice.actions
 
 export default authSlice.reducer

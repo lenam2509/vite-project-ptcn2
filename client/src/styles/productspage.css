@@ -62,7 +62,9 @@
 
 @media screen and (max-width: 1024px) {
   .products_container {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .proucts_query {
     width: 100%;

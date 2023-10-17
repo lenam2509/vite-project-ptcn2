@@ -118,4 +118,26 @@
   .container2 .row:last-child {
     border-bottom: none;
   }
+
+  .container4 .box_container {
+    width: 100%;
+  }
+
+  .container4
+    .box_container
+    .react-multi-carousel-list
+    .react-multi-carousel-track {
+    padding: 0;
+  }
+}
+
+/* max width 400 */
+
+@media (min-width: 400px) {
+  .container4
+    .box_container
+    .react-multi-carousel-list
+    .react-multi-carousel-track {
+    padding: 0 2.5rem;
+  }
 }
