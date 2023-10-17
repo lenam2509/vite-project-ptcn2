@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../../styles/login.css";
 import { toast } from "react-toastify";
-import axios from "axios";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/Slices/authSlice";

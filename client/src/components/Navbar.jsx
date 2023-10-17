@@ -124,7 +124,7 @@ export default function Navbar() {
               <span>{totalPrice.toLocaleString("vi-VN")}đ</span>
             </div>
             <div className="cart_btn">
-              <Link to="/cart" className="cart_btn_buy">
+              <Link to="/cart" onClick={toggleCart} className="cart_btn_buy">
                 Xem giỏ hàng
               </Link>
             </div>

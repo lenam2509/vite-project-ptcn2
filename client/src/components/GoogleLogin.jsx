@@ -1,7 +1,7 @@
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { useDispatch } from "react-redux";
-import { login, loginWithGoogle } from "../redux/Slices/authSlice";
+import { login } from "../redux/Slices/authSlice";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
@@ -42,7 +42,6 @@ export default function GoogleLoginBtn() {
   //   };
 
   const onSuccess = (res) => {
-    console.log(res);
     const credential = jwt_decode(res.credential);
     console.log(credential);
     const { email, name } = credential;
