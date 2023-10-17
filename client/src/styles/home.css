@@ -131,13 +131,22 @@
   }
 }
 
-/* max width 400 */
-
-@media (min-width: 400px) {
+@media (max-width: 500px) {
   .container4
     .box_container
     .react-multi-carousel-list
     .react-multi-carousel-track {
     padding: 0 2.5rem;
+  }
+}
+
+/* for iphone 5 */
+
+@media (max-width: 375px) {
+  .container4
+    .box_container
+    .react-multi-carousel-list
+    .react-multi-carousel-track {
+    padding: 0 1.5rem;
   }
 }
