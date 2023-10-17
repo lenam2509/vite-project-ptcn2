@@ -64,7 +64,7 @@ export default function GoogleLoginBtn() {
             email: "",
             name: "",
           });
-          history.push("/");
+          history.push("/userinfo");
         }
       })
       .catch((err) => {
