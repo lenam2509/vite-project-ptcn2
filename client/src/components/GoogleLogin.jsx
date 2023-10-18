@@ -83,7 +83,6 @@ export default function GoogleLoginBtn() {
           console.log("Login Failed");
         }}
       />
-      ;
     </div>
   );
 }
