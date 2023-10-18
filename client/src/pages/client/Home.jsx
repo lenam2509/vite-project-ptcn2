@@ -34,6 +34,11 @@ export default function Home() {
   };
   const [hotProducts, setHotProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [items, setItems] = useState({
+    nhan: 0,
+    daychuyen: 0,
+    lac: 0,
+  });
 
   console.log(process.env.REACT_APP_API_URL);
 
@@ -52,6 +57,20 @@ export default function Home() {
     };
     fetchHotProducts();
   }, []);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      const res = await AxiosConfig.get("/api/statistical/producstpercate");
+      console.log(res);
+      setItems({
+        nhan: res.data.Nhan,
+        daychuyen: res.data.Daychuyen,
+        lac: res.data.Lactay,
+      });
+    };
+    fetchItems();
+  }, []);
+
   return (
     <>
       <SlideBaner />
@@ -59,17 +78,23 @@ export default function Home() {
         <div className="row">
           <GiFireRing />
           <h2>Lắc đeo tay</h2>
-          <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
+          <span>
+            Có tổng cộng {items.lac} sản phẩm này đang được bán trên web
+          </span>
         </div>
         <div className="row">
           <GiEmeraldNecklace />
           <h2>Dây chuyền</h2>
-          <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
+          <span>
+            Có tổng cộng {items.daychuyen} sản phẩm này đang được bán trên web
+          </span>
         </div>
         <div className="row">
           <GiDiamondRing />
           <h2>Nhẫn đeo tay</h2>
-          <span>Có tổng cộng 20 sản phẩm này đang được bán trên web</span>
+          <span>
+            Có tổng cộng {items.nhan} sản phẩm này đang được bán trên web
+          </span>
         </div>
       </div>
       <div className="container3">

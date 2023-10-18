@@ -8,7 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function Donutchart() {
   const [bills, setBills] = useState([]);
   const data = {
-    labels: ["chờ duyệt", "đang xử lý", "đã giao", "đã nhận", "đã hủy"],
+    labels: ["chờ duyệt", "đang xử lý", "đã giao", "đã nhận hàng", "đã hủy"],
     datasets: [
       {
         label: "Hóa đơn",

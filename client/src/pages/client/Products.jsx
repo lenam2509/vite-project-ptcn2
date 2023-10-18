@@ -4,19 +4,24 @@ import "../../styles/productspage.css";
 import AxiosConfig from "../../axios/AxiosConfig";
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState("");
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(8);
   const [url, setUrl] = useState(`/api/products?page=1&limit=8`);
   const [prevdisabled, setPrevDisabled] = useState(false);
   const [nextdisabled, setNextDisabled] = useState(false);
+  const [sort, setSort] = useState("");
+  const [searh, setSearch] = useState("");
 
   const handelNextPage = () => {
     if (products.products?.length < limit) {
       return setNextDisabled(true);
     }
     setPage(page + 1);
-    setUrl(`/api/products?page=${page + 1}&limit=${limit}`);
+    //  set current api url
+    setUrl((prev) => prev.replace(`page=${page}`, `page=${page + 1}`));
   };
 
   const handlePrevPage = () => {
@@ -24,7 +29,44 @@ export default function Products() {
       return setPrevDisabled(true);
     }
     setPage(page - 1);
-    setUrl(`/api/products?page=${page - 1}&limit=${limit}`);
+    //  set current api url
+    setUrl((prev) => prev.replace(`page=${page}`, `page=${page - 1}`));
+  };
+
+  const handleSearch = () => {
+    setPage(1);
+    if (searh === "") {
+      return setUrl(`/api/products?page=${1}&limit=${limit}`);
+    }
+    setUrl(`/api/products/search?search=${searh}&page=${1}&limit=${limit}`);
+  };
+
+  const handleCategory = (e) => {
+    setCategory(e.target.value);
+    setPage(1);
+    if (e.target.value === "") {
+      return setUrl(`/api/products?page=${1}&limit=${limit}`);
+    }
+    setUrl(
+      `/api/products/category?category=${
+        e.target.value
+      }&page=${1}&limit=${limit}`
+    );
+  };
+
+  const handleSortChange = (e) => {
+    setSort(e.target.value);
+    setPage(1);
+    console.log(page);
+    if (e.target.value === "") {
+      return setUrl(`/api/products?page=1&limit=${limit}`);
+    }
+    if (e.target.value === "hight") {
+      return setUrl(`api/products/hight?page=${1}&limit=${limit}`);
+    }
+    if (e.target.value === "low") {
+      return setUrl(`api/products/low?page=${1}&limit=${limit}`);
+    }
   };
 
   useEffect(() => {
@@ -32,7 +74,7 @@ export default function Products() {
       try {
         setLoading(true);
         const res = await AxiosConfig.get(url);
-        console.log(res);
+
         setProducts(res.data);
         setLoading(false);
       } catch (err) {
@@ -43,30 +85,46 @@ export default function Products() {
     fetchProducts();
   }, [page, limit, url]);
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await AxiosConfig.get("/api/categories");
+        setCategories(res.data.categories);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchCategories();
+  }, []);
+
   return (
     <div>
       <div className="proucts_query">
         <div className="products_selections">
           <p>Thể loại</p>
-          <select>
-            <option value="all">Tất cả</option>
-            <option value="1">Thể loại 1</option>
-            <option value="2">Thể loại 2</option>
-            <option value="3">Thể loại 3</option>
+          <select onChange={handleCategory}>
+            <option value={""}>Tất cả</option>
+            {categories.map((category) => (
+              <option key={category._id} value={category._id}>
+                {category.name}
+              </option>
+            ))}
           </select>
         </div>
         <div className="products_searcher">
-          <input type="text" placeholder="tìm sản phẩm" />
-          <button>Search</button>
+          <input
+            type="text"
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="tìm sản phẩm"
+          />
+          <button onClick={handleSearch}>Search</button>
         </div>
         <div className="products_sorter">
           <p>Sắp xếp theo</p>
-          <select>
-            <option>Mặc định</option>
-            <option value="1">Giá tăng dần</option>
-            <option value="2">Giá giảm dần</option>
-            <option value="3">Tên A-Z</option>
-            <option value="4">Tên Z-A</option>
+          <select onChange={handleSortChange}>
+            <option value={""}>Mặc định</option>
+            <option value="hight">Giá giảm dần</option>
+            <option value="low">Giá tăng dần</option>
           </select>
         </div>
       </div>
