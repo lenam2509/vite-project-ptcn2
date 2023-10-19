@@ -295,7 +295,7 @@ export default function Bills() {
                   <tr key={index}>
                     <th>{index + 1}</th>
                     <td>{bill.billId}</td>
-                    <td>{bill.user.name}</td>
+                    <td>{bill.user?.name}</td>
                     <td className="">
                       {bill.products.map((product, index) => (
                         <p key={index}>
