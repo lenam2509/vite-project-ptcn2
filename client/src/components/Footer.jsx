@@ -16,7 +16,9 @@ export default function Footer() {
           <p>Hotline: 035501907</p>
           <p>Email: j&6team@gmail.com</p>
           <p className="fotter_media">
-            <AiFillFacebook />
+            <a href="https://www.facebook.com/profile.php?id=61551819712731">
+              <AiFillFacebook />
+            </a>
             <AiFillInstagram />
             <FaTiktok />
           </p>
