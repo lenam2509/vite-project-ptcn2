@@ -12,6 +12,9 @@ export default function Sidebar() {
       <NavLink to="/admin/dashboard" className="sidebar_link">
         Thống Kê <AiFillDashboard />
       </NavLink>
+      <NavLink to="/admin/cate" className="sidebar_link">
+        Loại Sản Phẩm <AiOutlineUnorderedList />
+      </NavLink>
       <NavLink to="/admin/products" className="sidebar_link">
         Sản Phẩm <AiOutlineUnorderedList />
       </NavLink>

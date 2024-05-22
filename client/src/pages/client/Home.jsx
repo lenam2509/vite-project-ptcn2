@@ -40,7 +40,7 @@ export default function Home() {
     lac: 0,
   });
 
-  console.log(process.env.REACT_APP_API_URL);
+  // console.log(process.env.REACT_APP_API_URL);
 
   useEffect(() => {
     const fetchHotProducts = async () => {

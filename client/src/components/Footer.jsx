@@ -33,7 +33,7 @@ export default function Footer() {
       </div>
       <div className="fotter_coppyright">
         <img src={logo} alt="" width={"100px"} height={"100px"} />
-        <p>© 2021 - Bản quyền thuộc về J&6 TEAM</p>
+        <p>© 2023 - Bản quyền thuộc về J&6 TEAM</p>
       </div>
     </footer>
   );

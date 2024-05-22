@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar";
 import Products from "./Products";
 import Bills from "./Bills";
 import Users from "./Users";
+import Cate from "./Cate";
 
 export default function AdminRoute() {
   return (
@@ -19,6 +20,8 @@ export default function AdminRoute() {
             <Route path="/admin/products" exact component={Products} />
             <Route path="/admin/bills" exact component={Bills} />
             <Route path="/admin/users" exact component={Users} />
+            <Route path="/admin/cate" exact component={Cate} />
+
           </Switch>
         </div>
       </div>
