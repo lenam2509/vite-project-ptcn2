@@ -277,7 +277,7 @@ export default function Checkout() {
               Thanh toán khi nhận hàng
             </button>
             <button className="btn" onClick={handleSubmitBank}>
-              Thanh toán bằng chuyển khoản
+              Thanh toán bằng ngân hàng
             </button>
           </div>
         </div>
