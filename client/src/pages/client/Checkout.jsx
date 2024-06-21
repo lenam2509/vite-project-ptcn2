@@ -126,6 +126,8 @@ export default function Checkout() {
       note,
       cityDistricts,
       total: totalPrice + 30000,
+      bankCode: null,
+      language: "vn",
     };
     if (
       body.name === "" ||
@@ -138,13 +140,15 @@ export default function Checkout() {
       return;
     }
     try {
-      const res = await AxiosConfig.post("/api/bills", body);
+      const res = await AxiosConfig.post("/api/bills/banks", body);
       console.log(res);
       if (res.status === 200 || res.status === 201) {
         toast.success("Đặt hàng thành công", {
           position: toast.POSITION.TOP_CENTER,
         });
-        history.push("/userinfo");
+        const { data } = res;
+        console.log(data.url);
+
         dispatch(clearCart());
         dispatch(
           update({
@@ -153,6 +157,7 @@ export default function Checkout() {
             phone: body.phone,
           })
         );
+        window.location.href = data.url;
       } else {
         toast.error("Đặt hàng thất bại");
       }
@@ -161,6 +166,8 @@ export default function Checkout() {
       toast.error("Đặt hàng thất bại");
     }
   };
+
+  
 
   return (
     <div className="checkout_container">
