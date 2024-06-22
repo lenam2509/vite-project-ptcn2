@@ -147,16 +147,15 @@ export default function Checkout() {
           position: toast.POSITION.TOP_CENTER,
         });
         const { data } = res;
-        console.log(data.url);
-
         dispatch(clearCart());
-        dispatch(
-          update({
-            ...data,
-            address: body.address,
-            phone: body.phone,
-          })
-        );
+
+        // dispatch(
+        //   update({
+        //     ...data,
+        //     address: body.address,
+        //     phone: body.phone,
+        //   })
+        // );
         window.location.href = data.url;
       } else {
         toast.error("Đặt hàng thất bại");
@@ -166,8 +165,6 @@ export default function Checkout() {
       toast.error("Đặt hàng thất bại");
     }
   };
-
-  
 
   return (
     <div className="checkout_container">
