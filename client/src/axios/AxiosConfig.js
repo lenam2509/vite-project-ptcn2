@@ -29,7 +29,7 @@ AxiosConfig.interceptors.response.use(
         return response;
     },
     error => {
-        if (error.response.status === 401) {
+        if (error.response.status === 401 || error.response.status === 403) {
             localStorage.removeItem('persist:auth');
             window.location.href = '/login';
             toast.error('Xin vui lòng đăng nhập để tiếp tục', {

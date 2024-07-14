@@ -214,6 +214,11 @@ export default function Bills() {
                 Đang chờ duyệt
               </option>
             )}
+            {bill.status === "Payed" && (
+              <option value="Payed" hidden selected>
+                Đã thanh toán
+              </option>
+            )}
             {bill.status === "Processing" && (
               <option value="Processing" hidden selected>
                 Đang xử lý
@@ -311,6 +316,7 @@ export default function Bills() {
                     </td>
                     <td>
                       {bill.status === "Pending" && "đang chờ duyệt"}
+                      {bill.status === "Payed" && "đã thanh toán"}
                       {bill.status === "Processing" && "đang xử lý"}
                       {bill.status === "Delivered" && "đang giao hàng"}
                       {bill.status === "Cancelled" && "đã hủy"}

@@ -121,6 +121,7 @@ export default function UserInfo() {
                     </td>
                     <td>
                       {bill.status === "Pending" && "đang chờ duyệt"}
+                      {bill.status === "Payed" && "đã thanh toán"}
                       {bill.status === "Processing" && "đang xử lý"}
                       {bill.status === "Delivered" && "đang giao hàng"}
                       {bill.status === "Cancelled" && "đã hủy"}

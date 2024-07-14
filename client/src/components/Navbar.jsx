@@ -7,7 +7,7 @@ import {
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "../styles/navbar.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Product from "../assets/images/product.jpg";
 import Logo from "../assets/images/logo.jpg";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";

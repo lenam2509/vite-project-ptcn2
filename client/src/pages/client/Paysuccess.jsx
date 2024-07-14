@@ -4,13 +4,13 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 
 export default function Paysuccess() {
-  const { items } = useSelector((state) => state.cart);
+  // const { items } = useSelector((state) => state.cart);
 
-  useEffect(() => {
-    if (items.length === 0) {
-      window.location.href = "/products";
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (items.length === 0) {
+  //     window.location.href = "/products";
+  //   }
+  // }, []);
 
   return (
     <div className=" w-full">

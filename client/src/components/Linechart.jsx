@@ -48,7 +48,7 @@ export default function Linechart() {
     // ],
     datasets: [
       {
-        label: "Tổng doanh thu 2023 (M)",
+        label: `Doanh thu năm ${year}`,
         data: revenue,
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
